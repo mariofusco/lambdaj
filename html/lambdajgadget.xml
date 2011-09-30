@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+  <ModulePrefs title="LambdaJ Google Gadget" />
+  <Content type="html">
+     <![CDATA[
+       <div style="border:1px solid #ccc;width:850px;height:650px;">
+       <object type="application/x-shockwave-flash" data="http://www.snoopal.com/js/viewer/viewer.swf" width="850" height="650">
+       <param name="movie" value="http://www.snoopal.com/js/viewer/viewer.swf">
+       <param name="menu" value="false">
+       <param name="scale" value="noScale">
+       <param name="allowFullscreen" value="true">
+       <param name="allowScriptAccess" value="always">
+       <param name="bgcolor" value="#333">
+       <param name="wmode" value="opaque">
+       <param name="flashvars" value="documentUrl=%2fdocuments%2f6600283f-0c72-4ba5-8af3-73f11d1cb0ca%2fLambdaj-javaone-slides%2fswfstream%3fclipNumber%3d1%2c%2fdocuments%2f6600283f-0c72-4ba5-8af3-73f11d1cb0ca%2fLambdaj-javaone-slides%2fswfstream%3fclipNumber%3d2&pages=10%2c22&email=&documentTitle=lambdaj-javaone-slides&topBar=1&serverUrl=http%3a%2f%2fwww.snoopal.com">
+       <embed src="http://www.snoopal.com/js/viewer/viewer.swf?documentUrl=%2fdocuments%2f6600283f-0c72-4ba5-8af3-73f11d1cb0ca%2fLambdaj-javaone-slides%2fswfstream%3fclipNumber%3d1%2c%2fdocuments%2f6600283f-0c72-4ba5-8af3-73f11d1cb0ca%2fLambdaj-javaone-slides%2fswfstream%3fclipNumber%3d2&pages=10%2c22&email=&documentTitle=lambdaj-javaone-slides&topBar=1&serverUrl=http%3a%2f%2fwww.snoopal.com" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="850" height="650" />
+       </object>
+       </div>
+     ]]>
+  </Content>
+</Module>

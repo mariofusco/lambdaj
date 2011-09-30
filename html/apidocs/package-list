@@ -1,0 +1,12 @@
+ch.lambdaj
+ch.lambdaj.collection
+ch.lambdaj.function.aggregate
+ch.lambdaj.function.argument
+ch.lambdaj.function.closure
+ch.lambdaj.function.compare
+ch.lambdaj.function.convert
+ch.lambdaj.function.matcher
+ch.lambdaj.group
+ch.lambdaj.proxy
+ch.lambdaj.util
+ch.lambdaj.util.iterator

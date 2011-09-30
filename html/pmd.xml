@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd version="4.2.5" timestamp="2011-05-20T23:20:17.644">
+<file name="C:\data\dev\intellij\lambdaj\src\main\java\ch\lambdaj\function\argument\ArgumentsFactory.java">
+<violation beginline="191" endline="192" begincolumn="15" endcolumn="13" rule="EmptyCatchBlock" ruleset="Basic Rules" package="ch.lambdaj.function.argument" class="ArgumentsFactory" method="createArgumentPlaceholderForUnknownClass" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="192" endline="193" begincolumn="15" endcolumn="13" rule="EmptyCatchBlock" ruleset="Basic Rules" package="ch.lambdaj.function.argument" class="ArgumentsFactory" method="createArgumentPlaceholderForUnknownClass" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+</file>
+</pmd>

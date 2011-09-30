@@ -1,0 +1,12 @@
+ch.lambdaj
+ch.lambdaj.collection
+ch.lambdaj.demo
+ch.lambdaj.function.aggregate
+ch.lambdaj.function.argument
+ch.lambdaj.function.closure
+ch.lambdaj.function.matcher
+ch.lambdaj.group
+ch.lambdaj.mock
+ch.lambdaj.proxy.nodefconstructor
+ch.lambdaj.proxy.nodefconstructor.problem
+ch.lambdaj.util.iterator
