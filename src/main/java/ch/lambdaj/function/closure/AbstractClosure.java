@@ -21,15 +21,15 @@ abstract class AbstractClosure {
      */
     public static final String CONSTRUCTOR = "<init>";
 
-	private Object closed;
+	Object closed;
 	
-	private List<Invokable> invokables = new ArrayList<Invokable>();
-	private List<Object[]> argsList = new ArrayList<Object[]>();
+	List<Invokable> invokables = new ArrayList<Invokable>();
+	List<Object[]> argsList = new ArrayList<Object[]>();
 	
-	private Object[] curriedVars;
-	private boolean[] curriedVarsFlags;
+	Object[] curriedVars;
+	boolean[] curriedVarsFlags;
 
-    private int freeVarsNumber = 0;
+    int freeVarsNumber = 0;
 
     private final List<Object[]> unhandeledInvocations = new ArrayList<Object[]>();
 
@@ -289,7 +289,7 @@ abstract class AbstractClosure {
         }
     }
 
-    private void curryParam(Object curried, int position) throws IllegalArgumentException {
+    void curryParam(Object curried, int position) throws IllegalArgumentException {
         if (checkCurriedOnClosed(curried, position)) return;
 
         if (curriedVars == null) {
