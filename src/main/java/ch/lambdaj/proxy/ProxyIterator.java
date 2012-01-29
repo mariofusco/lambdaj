@@ -35,7 +35,7 @@ public class ProxyIterator<T> extends InvocationInterceptor implements Iterable<
     /**
      * {@inheritDoc}
      */
-    public Object invoke(Object obj, Method method, Object[] args) throws InvocationTargetException, IllegalAccessException {
+    public Object invoke(Object obj, Method method, Object[] args) {
 		if (method.getName().equals("iterator")) return iterator();
         if (enabled) return createProxyIterator(iterateOnValues(method, args), (Class<Object>)method.getReturnType());
         return null; 
@@ -46,15 +46,28 @@ public class ProxyIterator<T> extends InvocationInterceptor implements Iterable<
      * @param method The method to be invoked
      * @param args The arguments used to invoke the given method
      * @return An Iterator over the results on all the invoctions of the given method
-     * @throws InvocationTargetException
-     * @throws IllegalAccessException
      */
-	protected ResettableIterator<Object> iterateOnValues(Method method, Object[] args) throws InvocationTargetException, IllegalAccessException {
+	protected ResettableIterator<Object> iterateOnValues(Method method, Object[] args) {
         if (method.getName().equals("finalize")) return null;
         method.setAccessible(true);
         proxiedIterator.reset();
         List<Object> list = new LinkedList<Object>();
-        while (proxiedIterator.hasNext()) { list.add(method.invoke(proxiedIterator.next(), args)); }
+        while (proxiedIterator.hasNext()) {
+            try {
+                list.add(method.invoke(proxiedIterator.next(), args));
+            } catch (Exception e) {
+                Throwable cause = e.getCause();
+                if (cause != null) {
+                    if (cause instanceof RuntimeException) {
+                        throw (RuntimeException)cause;
+                    } else {
+                        throw new RuntimeException(cause);
+                    }
+                } else {
+                    throw new RuntimeException(e);
+                }
+            }
+        }
 		return new ResettableIteratorOnIterable(list);
 	}
 

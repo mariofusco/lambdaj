@@ -69,6 +69,17 @@ public class LambdaTest {
 	}
 
     @Test
+    public void testForEachThrowingException() {
+        List<Person> personInFamily = asList(new Person("Domenico"), new Person("Mario"), new PersonThrowingException());
+        try {
+            forEach(personInFamily).setLastName("Fusco");
+            fail("Must throw a RuntimeException");
+        } catch (RuntimeException e) {
+            assertEquals("Cannot set last name", e.getMessage());
+        }
+    }
+
+    @Test
     public void testForEachOnIterator() {
         List<Person> personInFamily = asList(new Person("Domenico"), new Person("Mario"), new Person("Irma"));
         forEach(personInFamily.iterator()).setLastName("Fusco");
