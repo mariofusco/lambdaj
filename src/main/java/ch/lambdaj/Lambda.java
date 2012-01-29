@@ -577,6 +577,7 @@ public final class Lambda {
     }
 
     private static Number typedZero(Class<?> numberClass) {
+        if (numberClass == Long.class) return 0L;
         if (numberClass == Double.class) return 0.0;
         if (numberClass == Float.class) return 0.0f;
         if (BigInteger.class.isAssignableFrom(numberClass)) return BigInteger.ZERO;

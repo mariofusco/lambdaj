@@ -108,6 +108,10 @@ public class Person implements IPerson {
         return getFirstName() + " " + getLastName();
     }
 
+    public float getFloat() {
+        return 1.1f;
+    }
+
     @Override
     public String toString() {
         return getFullName();

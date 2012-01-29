@@ -481,7 +481,16 @@ public class LambdaTest {
 		assertSame(me, friendsIterator.next());
 		assertSame(biagio, friendsIterator.next());
 	}
-	
+
+    @Test
+    public void testRepeatedSum() {
+        List<Person> meAndMyFriends = asList(me, luca, biagio, celestino);
+        assertEquals((Float)4.4f, sum(meAndMyFriends, on(Person.class).getFloat()));
+        assertEquals((Integer)132, sum(meAndMyFriends, on(Person.class).getAge()));
+        assertEquals((Float)4.4f, sum(meAndMyFriends, on(Person.class).getFloat()));
+        assertEquals((Integer)132, sum(meAndMyFriends, on(Person.class).getAge()));
+    }
+
 	@Test
 	public void testIllegalSumFrom() {
 		try {
