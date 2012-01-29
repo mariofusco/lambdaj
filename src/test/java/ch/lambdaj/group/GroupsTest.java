@@ -7,7 +7,7 @@ package ch.lambdaj.group;
 import static ch.lambdaj.Lambda.*;
 import static ch.lambdaj.mock.ExposureBy.*;
 import static java.util.Arrays.*;
-import static org.hamcrest.collection.IsCollectionContaining.*;
+import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
 
 import java.util.*;

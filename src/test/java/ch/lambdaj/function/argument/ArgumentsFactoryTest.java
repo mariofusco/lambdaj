@@ -3,9 +3,12 @@ package ch.lambdaj.function.argument;
 import static ch.lambdaj.function.argument.ArgumentsFactory.*;
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.util.*;
 
+import org.joda.time.DateTime;
+import org.joda.time.LocalDate;
 import org.junit.*;
 
 public class ArgumentsFactoryTest {
@@ -37,6 +40,22 @@ public class ArgumentsFactoryTest {
             createArgumentPlaceholder(UnistatiableClass.class);
             fail("Should not be possible to instanciate an argument placeholder for UnistatiableClass");
         } catch (ArgumentConversionException e) { }
+    }
+
+    @Test
+    public void testArgumentsFactoryForFinalClasses() {
+        assertFalse(createArgumentPlaceholder(DateTime.class).equals(createArgumentPlaceholder(DateTime.class)));
+        ArgumentsFactory.registerFinalClassArgumentCreator(LocalDate.class, new LocalDateArgumentCreator());
+        assertFalse(createArgumentPlaceholder(LocalDate.class).equals(createArgumentPlaceholder(LocalDate.class)));
+        ArgumentsFactory.deregisterFinalClassArgumentCreator(LocalDate.class);
+        assertTrue(createArgumentPlaceholder(LocalDate.class).equals(createArgumentPlaceholder(LocalDate.class)));
+    }
+
+    public static class LocalDateArgumentCreator implements FinalClassArgumentCreator<LocalDate> {
+        private final long MSECS_IN_DAY = 1000L * 60L * 60L * 24L;
+        public LocalDate createArgumentPlaceHolder(int seed) {
+            return new LocalDate((long)seed * MSECS_IN_DAY);
+        }
     }
 
     public static final class IntegerWrapper {

@@ -386,7 +386,7 @@ public class LambdaTest {
 		assertSame(luca, youngFriends.get(0));
 		assertSame(celestino, youngFriends.get(1));
 	}
-	
+
 	@Test
 	public void testSelectOnEnumMustFailWithHaving() {
 		List<Person> meAndMyFriends = asList(me, luca, biagio, celestino);

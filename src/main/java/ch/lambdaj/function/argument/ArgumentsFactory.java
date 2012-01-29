@@ -180,8 +180,21 @@ public final class ArgumentsFactory {
 			throw new ArgumentConversionException("It is not possible to create a placeholder for class: " + clazz.getName(), e);
 		}
     }
-    
+
+    private static Map<Class<?>, FinalClassArgumentCreator<?>> finalClassArgumentCreators = new HashMap<Class<?>, FinalClassArgumentCreator<?>>();
+
+    public static <T> void registerFinalClassArgumentCreator(Class<T> clazz, FinalClassArgumentCreator<T> creator) {
+        finalClassArgumentCreators.put(clazz, creator);
+    }
+
+    public static <T> void deregisterFinalClassArgumentCreator(Class<T> clazz) {
+        finalClassArgumentCreators.remove(clazz);
+    }
+
     private static Object createArgumentPlaceholderForUnknownClass(Class<?> clazz, Integer placeholderId) throws IllegalAccessException, InstantiationException {
+        FinalClassArgumentCreator<?> creator = finalClassArgumentCreators.get(clazz);
+        if (creator != null) return creator.createArgumentPlaceHolder(placeholderId);
+
         for (Constructor constructor : clazz.getConstructors()) {
             Class<?>[] params = constructor.getParameterTypes();
             if (params.length != 1) continue;
