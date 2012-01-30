@@ -63,11 +63,12 @@ final class Invocation {
         return invokedPropertyName;
     }
 
-    Object invokeOn(Object object) throws InvocationException {
+    Object invokeOn(Object object) {
         try {
             return object == null ? null : invokedMethod.invoke(object, getConcreteArgs());
         } catch (Exception e) {
-            throw new InvocationException(e, invokedMethod, object);
+            if (e instanceof RuntimeException) throw (RuntimeException)e;
+            throw new RuntimeException(e);
         }
     }
 

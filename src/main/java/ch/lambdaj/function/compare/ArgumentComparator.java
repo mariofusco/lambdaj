@@ -34,7 +34,8 @@ public class ArgumentComparator<T, A> implements Comparator<T>, Serializable {
      * @param argument The argument identifying the property to be compared
      */
 	public ArgumentComparator(Argument<A> argument) {
-		this(argument, null);
+        this.argument = argument;
+        this.comparator = DEFAULT_ARGUMENT_COMPARATOR;
 	}
 	
     /**
@@ -54,7 +55,7 @@ public class ArgumentComparator<T, A> implements Comparator<T>, Serializable {
     @SuppressWarnings("unchecked")
 	public ArgumentComparator(Argument<A> argument, Comparator<A> comparator) {
 		this.argument = argument;
-		this.comparator = comparator != null ? (Comparator<Object>)comparator : DEFAULT_ARGUMENT_COMPARATOR;
+		this.comparator = (Comparator<Object>)comparator;
 	}
 	
     /**

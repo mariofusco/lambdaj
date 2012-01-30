@@ -13,6 +13,7 @@ import java.util.*;
 import java.math.*;
 
 import ch.lambdaj.function.aggregate.*;
+import ch.lambdaj.function.compare.Sort;
 import org.hamcrest.*;
 import org.junit.*;
 import static org.junit.Assert.*;
@@ -248,13 +249,45 @@ public class LambdaTest {
 	public void testSortOnAgeArgument() {
 		List<Person> meAndMyFriends = asList(me, luca, biagio, celestino);
 		
-		List<Person> sorted = sort(meAndMyFriends, argument(on(Person.class).getAge()));
+		List<Person> sorted = sort(meAndMyFriends, on(Person.class).getAge());
 		assertSame(luca, sorted.get(0));
 		assertSame(celestino, sorted.get(1));
 		assertSame(me, sorted.get(2));
 		assertSame(biagio, sorted.get(3));
+
+        List<Person> descSorted = sort(meAndMyFriends, on(Person.class).getAge(), Sort.DESCENDING);
+        assertSame(biagio, descSorted.get(0));
+        assertSame(me, descSorted.get(1));
+        assertSame(luca, descSorted.get(2));
+        assertSame(celestino, descSorted.get(3));
 	}
-	
+
+    @Test
+    public void testSortIgnoreCase() {
+        luca.setFirstName("luca");
+        List<Person> meAndMyFriends = asList(me, luca, biagio, celestino);
+
+        List<Person> sorted = sort(meAndMyFriends, on(Person.class).getFirstName());
+        assertSame(biagio, sorted.get(0));
+        assertSame(celestino, sorted.get(1));
+        assertSame(me, sorted.get(2));
+        assertSame(luca, sorted.get(3));
+
+        List<Person> sortedIgnoreCase = sort(meAndMyFriends, on(Person.class).getFirstName(), Sort.IGNORE_CASE);
+        assertSame(biagio, sortedIgnoreCase.get(0));
+        assertSame(celestino, sortedIgnoreCase.get(1));
+        assertSame(luca, sortedIgnoreCase.get(2));
+        assertSame(me, sortedIgnoreCase.get(3));
+
+        List<Person> sortedDescIgnoreCase = sort(meAndMyFriends, on(Person.class).getFirstName(), Sort.DESCENDING + Sort.IGNORE_CASE);
+        assertSame(me, sortedDescIgnoreCase.get(0));
+        assertSame(luca, sortedDescIgnoreCase.get(1));
+        assertSame(celestino, sortedDescIgnoreCase.get(2));
+        assertSame(biagio, sortedDescIgnoreCase.get(3));
+
+        luca.setFirstName("Luca");
+    }
+
 	@Test
 	public void testFindOldest() {
 		List<Person> meAndMyFriends = asList(me, luca, biagio, celestino);

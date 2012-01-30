@@ -6,6 +6,7 @@ package ch.lambdaj;
 
 import static ch.lambdaj.function.argument.ArgumentsFactory.*;
 import static ch.lambdaj.function.closure.ClosuresFactory.*;
+import static ch.lambdaj.function.compare.ComparatorUtil.getStandardComparator;
 import static ch.lambdaj.function.matcher.HasArgumentWithValue.*;
 import static ch.lambdaj.util.iterator.IteratorFactory.*;
 
@@ -216,9 +217,22 @@ public final class Lambda {
 	 * @return A List with the same items of the given iterable sorted on the respective value of the given argument
 	 */
 	public static <T> List<T> sort(Object iterable, Object argument) {
-		return sort(iterable, argument, null);
+		return sort(iterable, argument, 0);
 	}
-	
+
+    /**
+     * Sorts all the items in the given iterable on the respective values of the given argument.
+     * Actually it handles also Maps, Arrays and Iterator by collecting their values.
+     * Note that this method accepts an Object in order to be used in conjunction with the {@link Lambda#forEach(Iterable)}.
+     * @param iterable The iterable of objects to be sorted
+     * @param argument An argument defined using the {@link Lambda#on(Class)} method
+     * @param option  e.g.: Sort.DESCENDING + Sort.IGNORE_CASE
+     * @return A List with the same items of the given iterable sorted on the respective value of the given argument
+     */
+    public static <T> List<T> sort(Object iterable, Object argument, int option) {
+        return sort(iterable, argument, getStandardComparator(option));
+    }
+
 	/**
 	 * Sorts all the items in the given iterable on the respective values of the given argument comparing them with the given comparator.
      * Actually it handles also Maps, Arrays and Iterator by collecting their values.

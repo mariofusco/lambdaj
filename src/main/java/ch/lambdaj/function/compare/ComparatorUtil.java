@@ -30,15 +30,64 @@ public final class ComparatorUtil {
         return o2 == null ? -1 : comparator.compare(o1, o2);
     }
 
-	static final Comparator<Object> DEFAULT_ARGUMENT_COMPARATOR = new DefaultArgumentComparator();
+    public static Comparator<Object> getStandardComparator(int option) {
+        switch(option) {
+            case 0:
+                return DEFAULT_ARGUMENT_COMPARATOR;
+            case 1:
+                return DESCENDING_ARGUMENT_COMPARATOR;
+            case 2:
+                return IGNORE_CASE_ARGUMENT_COMPARATOR;
+            case 3:
+                return DESCENDING_IGNORE_CASE_ARGUMENT_COMPARATOR;
+        }
+        throw new RuntimeException("Unknown comparator option: " + option);
+    }
 
+    static final Comparator<Object> DEFAULT_ARGUMENT_COMPARATOR = new DefaultArgumentComparator();
 	static class DefaultArgumentComparator implements Comparator<Object>, Serializable {
         /**
          * {@inheritDoc}
          */
         @SuppressWarnings("unchecked")
 		public int compare(Object val1, Object val2) {
-			return val1 != null ? ((Comparable)val1).compareTo(val2) : -((Comparable)val2).compareTo(null);
+            if (val1 == null) return val2 == null ? 0 : 1;
+			return val2 == null ? -1 : ((Comparable)val1).compareTo(val2);
 		}
 	}
+
+    static final Comparator<Object> DESCENDING_ARGUMENT_COMPARATOR = new DescendingArgumentComparator();
+    static class DescendingArgumentComparator extends DefaultArgumentComparator {
+        /**
+         * {@inheritDoc}
+         */
+        @SuppressWarnings("unchecked")
+        public int compare(Object val1, Object val2) {
+            int asc = super.compare(val1, val2);
+            return -asc;
+        }
+    }
+
+    static final Comparator<Object> IGNORE_CASE_ARGUMENT_COMPARATOR = new IgnoreCaseArgumentComparator();
+    static class IgnoreCaseArgumentComparator implements Comparator<Object>, Serializable {
+        /**
+         * {@inheritDoc}
+         */
+        @SuppressWarnings("unchecked")
+        public int compare(Object val1, Object val2) {
+            if (val1 == null) return val2 == null ? 0 : 1;
+            return val2 == null ? -1 : ((String)val1).compareToIgnoreCase((String)val2);
+        }
+    }
+
+    static final Comparator<Object> DESCENDING_IGNORE_CASE_ARGUMENT_COMPARATOR = new DescendingIgnoreCaseArgumentComparator();
+    static class DescendingIgnoreCaseArgumentComparator extends IgnoreCaseArgumentComparator {
+        /**
+         * {@inheritDoc}
+         */
+        @SuppressWarnings("unchecked")
+        public int compare(Object val1, Object val2) {
+            return -super.compare(val1, val2);
+        }
+    }
 }
