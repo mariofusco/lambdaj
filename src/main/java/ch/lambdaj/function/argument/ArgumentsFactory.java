@@ -181,7 +181,7 @@ public final class ArgumentsFactory {
 		}
     }
 
-    private static Map<Class<?>, FinalClassArgumentCreator<?>> finalClassArgumentCreators = new HashMap<Class<?>, FinalClassArgumentCreator<?>>();
+    private static final Map<Class<?>, FinalClassArgumentCreator<?>> finalClassArgumentCreators = new HashMap<Class<?>, FinalClassArgumentCreator<?>>();
 
     public static <T> void registerFinalClassArgumentCreator(Class<T> clazz, FinalClassArgumentCreator<T> creator) {
         finalClassArgumentCreators.put(clazz, creator);
@@ -216,7 +216,7 @@ public final class ArgumentsFactory {
         if (isInt(clazz)) return placeholderId;
         if (isLong(clazz)) return placeholderId.longValue();
         if (isDouble(clazz)) return placeholderId.doubleValue();
-        if (isFloat(clazz)) return placeholderId.floatValue();
+        if (isFloat(clazz)) return new Float(placeholderId % 1000000);
         if (isCharacter(clazz)) return Character.forDigit(placeholderId % Character.MAX_RADIX, Character.MAX_RADIX);
         if (isShort(clazz)) return placeholderId.shortValue();
         return placeholderId.byteValue();

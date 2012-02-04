@@ -998,4 +998,52 @@ public class LambdaTest {
         assertFalse("Has no match", exists(Collections.singleton("bar"), equalTo("foo")));
         assertTrue("One of many", exists(Arrays.asList("bar", "foo"), equalTo("foo")));
     }
+
+    @Test
+    public void testFloatArgument() {
+        Set<CostItem> costItems = new HashSet<CostItem>();
+
+        CostItem costItem = new CostItem();
+        costItem.setCashOut(5f);
+        costItem.setTravel(10f);
+        costItems.add(costItem);
+
+        costItem = new CostItem();
+        costItem.setCashOut(2f);
+        costItem.setTravel(20f);
+        costItems.add(costItem);
+
+        costItem = new CostItem();
+        costItem.setCashOut(3f);
+        costItem.setTravel(30f);
+        costItems.add(costItem);
+
+        float f = Lambda.sum(costItems, Lambda.on(CostItem.class).getCashOut());
+        assertEquals(10f, f, 0.1);
+        f = Lambda.sum(costItems , Lambda.on(CostItem.class).getTravel());
+        assertEquals(60f, f, 0.1);
+        f = Lambda.sum(costItems , Lambda.on(CostItem.class).getCashOut());
+        assertEquals(10f, f, 0.1);
+    }
+
+    public static class CostItem {
+
+        private float _travel;
+
+        private float _cashOut;
+
+        public float getTravel() {
+            return _travel;
+        }
+        public void setTravel(float travel) {
+            _travel = travel;
+        }
+
+        public float getCashOut() {
+            return _cashOut;
+        }
+        public void setCashOut(float cashOut) {
+            _cashOut = cashOut;
+        }
+    }
 }
