@@ -130,6 +130,21 @@ public class LambdaIterable<T> extends AbstractLambdaCollection<T> implements It
     }
 
     /**
+     * Sorts all the items in this iterable on the respective values of the given argument.
+     * @param argument An argument defined using the {@link Lambda#on(Class)} method
+     * @param option  Sorting option e.g.: Sort.DESCENDING + Sort.IGNORE_CASE
+     * @return A List with the same items of this iterable sorted on the respective value of the given argument
+     */
+    public LambdaIterable<T> sort(Object argument, int option) {
+        doSort(argument, option);
+        return this;
+    }
+
+    void doSort(Object argument, int option) {
+        setInner((Iterable<? extends T>)Lambda.sort(innerIterable, argument, option));
+    }
+
+    /**
      * Converts all the object in this iterable using the given {@link Converter}.
      * @param converter The converter that specifies how each object in the iterable must be converted
      * @return A LambdaIterable containing all the objects in this iterable converted using the given {@link Converter}

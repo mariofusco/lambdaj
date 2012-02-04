@@ -58,6 +58,15 @@ public class LambdaCollection<T> extends LambdaIterable<T> implements Collection
      * {@inheritDoc}
      */
     @Override
+    public LambdaCollection<T> sort(Object argument, int option) {
+        doSort(argument, option);
+        return this;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     public <V> LambdaCollection<V> convert(Converter<T, V> converter) {
         return new LambdaCollection<V>(doConvert(converter));
     }

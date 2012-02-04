@@ -12,7 +12,6 @@ import java.lang.reflect.*;
 import java.util.*;
 import java.math.*;
 
-import ch.lambdaj.function.aggregate.*;
 import ch.lambdaj.function.compare.Sort;
 import org.hamcrest.*;
 import org.junit.*;

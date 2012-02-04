@@ -53,6 +53,15 @@ public class LambdaList<T> extends LambdaCollection<T> implements List<T>, Clone
     /**
      * {@inheritDoc}
      */
+    @Override
+    public LambdaCollection<T> sort(Object argument, int option) {
+        doSort(argument, option);
+        return this;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public <V> LambdaList<V> convert(Converter<T, V> converter) {
         return new LambdaList<V>(doConvert(converter));
     }
