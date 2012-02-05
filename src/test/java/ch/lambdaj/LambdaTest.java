@@ -12,7 +12,6 @@ import java.lang.reflect.*;
 import java.util.*;
 import java.math.*;
 
-import ch.lambdaj.function.compare.Sort;
 import org.hamcrest.*;
 import org.junit.*;
 import static org.junit.Assert.*;
@@ -254,7 +253,7 @@ public class LambdaTest {
 		assertSame(me, sorted.get(2));
 		assertSame(biagio, sorted.get(3));
 
-        List<Person> descSorted = sort(meAndMyFriends, on(Person.class).getAge(), Sort.DESCENDING);
+        List<Person> descSorted = sort(meAndMyFriends, on(Person.class).getAge(), DESCENDING);
         assertSame(biagio, descSorted.get(0));
         assertSame(me, descSorted.get(1));
         assertSame(luca, descSorted.get(2));
@@ -272,13 +271,13 @@ public class LambdaTest {
         assertSame(me, sorted.get(2));
         assertSame(luca, sorted.get(3));
 
-        List<Person> sortedIgnoreCase = sort(meAndMyFriends, on(Person.class).getFirstName(), Sort.IGNORE_CASE);
+        List<Person> sortedIgnoreCase = sort(meAndMyFriends, on(Person.class).getFirstName(), IGNORE_CASE);
         assertSame(biagio, sortedIgnoreCase.get(0));
         assertSame(celestino, sortedIgnoreCase.get(1));
         assertSame(luca, sortedIgnoreCase.get(2));
         assertSame(me, sortedIgnoreCase.get(3));
 
-        List<Person> sortedDescIgnoreCase = sort(meAndMyFriends, on(Person.class).getFirstName(), Sort.DESCENDING + Sort.IGNORE_CASE);
+        List<Person> sortedDescIgnoreCase = sort(meAndMyFriends, on(Person.class).getFirstName(), DESCENDING + IGNORE_CASE);
         assertSame(me, sortedDescIgnoreCase.get(0));
         assertSame(luca, sortedDescIgnoreCase.get(1));
         assertSame(celestino, sortedDescIgnoreCase.get(2));

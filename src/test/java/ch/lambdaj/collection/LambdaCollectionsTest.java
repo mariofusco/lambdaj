@@ -4,7 +4,6 @@
 
 package ch.lambdaj.collection;
 
-import ch.lambdaj.function.compare.Sort;
 import ch.lambdaj.function.convert.*;
 import org.junit.*;
 
@@ -93,7 +92,7 @@ public class LambdaCollectionsTest {
         assertSame(me, sorted.get(2));
         assertSame(biagio, sorted.get(3));
 
-        meAndMyFriends.sort(on(Person.class).getAge(), Sort.DESCENDING);
+        meAndMyFriends.sort(on(Person.class).getAge(), DESCENDING);
         assertSame(biagio, sorted.get(0));
         assertSame(me, sorted.get(1));
         assertSame(luca, sorted.get(2));

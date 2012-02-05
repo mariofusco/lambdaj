@@ -208,6 +208,9 @@ public final class Lambda {
 	// /// Sort
 	// ////////////////////////////////////////////////////////////////////////
 
+    public static final int DESCENDING = 1;
+    public static final int IGNORE_CASE = 2;
+
 	/**
 	 * Sorts all the items in the given iterable on the respective values of the given argument.
      * Actually it handles also Maps, Arrays and Iterator by collecting their values.
@@ -226,7 +229,7 @@ public final class Lambda {
      * Note that this method accepts an Object in order to be used in conjunction with the {@link Lambda#forEach(Iterable)}.
      * @param iterable The iterable of objects to be sorted
      * @param argument An argument defined using the {@link Lambda#on(Class)} method
-     * @param option  Sorting option e.g.: Sort.DESCENDING + Sort.IGNORE_CASE
+     * @param option  Sorting option e.g.: DESCENDING + IGNORE_CASE
      * @return A List with the same items of the given iterable sorted on the respective value of the given argument
      */
     public static <T> List<T> sort(Object iterable, Object argument, int option) {
