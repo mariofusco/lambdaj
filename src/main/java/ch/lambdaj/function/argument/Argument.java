@@ -4,6 +4,12 @@
 
 package ch.lambdaj.function.argument;
 
+import ch.lambdaj.Lambda;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
+
 /**
  * An Argument represents a statically defined sequence of method invocations on a given Class.
  * @author Mario Fusco
@@ -11,9 +17,19 @@ package ch.lambdaj.function.argument;
 public class Argument<T> {
 
 	private final InvocationSequence invocationSequence;
-	
-	Argument(InvocationSequence invocationSequence) {
+
+    private final boolean isJittable;
+
+    private Invoker jittedInvoker;
+
+    private AtomicInteger invocationCounter = new AtomicInteger(0);
+
+    private static final Map<String, Invoker> invokerCache = new HashMap<String, Invoker>();
+
+    Argument(InvocationSequence invocationSequence) {
 		this.invocationSequence = invocationSequence;
+        isJittable = Lambda.jitThreshold >= 0 && invocationSequence.isJittable();
+        if (isJittable) jittedInvoker = invokerCache.get(invocationSequence.toString());
 	}
 	
 	/**
@@ -32,6 +48,15 @@ public class Argument<T> {
 	 */
 	@SuppressWarnings("unchecked")
 	public T evaluate(Object object) {
+        if (jittedInvoker != null) return (T)jittedInvoker.invokeOn(object);
+        if (!isJittable) return (T)invocationSequence.invokeOn(object);
+
+        if (invocationCounter.getAndIncrement() == Lambda.jitThreshold) {
+            jittedInvoker = new InvokerJitter(object, invocationSequence).jitInvoker();
+            invokerCache.put(invocationSequence.toString(), jittedInvoker);
+            return (T)jittedInvoker.invokeOn(object);
+        }
+
         return (T)invocationSequence.invokeOn(object);
 	}
 	

@@ -10,12 +10,12 @@ package ch.lambdaj.function.argument;
  * @author Mario Fusco
  * @author Frode Carlsen
  */
-final class InvocationSequence {
+final class InvocationSequence implements Invoker {
     private static final long serialVersionUID = 1L;
 
     private final Class<?> rootInvokedClass;
     private String inkvokedPropertyName;
-    private Invocation lastInvocation;
+    Invocation lastInvocation;
     private transient int hashCode;
 
     InvocationSequence(Class<?> rootInvokedClass) {
@@ -80,15 +80,22 @@ final class InvocationSequence {
         return hashCode;
     }
 
-    @SuppressWarnings("unchecked")
-    public <T> T invokeOn(Object object) {
-        return (T)invokeOn(lastInvocation, object);
+    public Object invokeOn(Object object) {
+        return invokeOn(lastInvocation, object);
     }
 
     private Object invokeOn(Invocation invocation, Object value) {
         if (invocation == null) return value;
         if (invocation.previousInvocation != null) value = invokeOn(invocation.previousInvocation, value);
         return invocation.invokeOn(value);
+    }
+
+    boolean isJittable() {
+        return lastInvocation != null && isJittable(lastInvocation);
+    }
+
+    private boolean isJittable(Invocation invocation) {
+        return !invocation.hasArguments() && (invocation.previousInvocation == null || isJittable(invocation.previousInvocation));
     }
 
     @Override

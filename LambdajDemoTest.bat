@@ -1,3 +1,3 @@
 set MAVEN_REPO=C:\Users\Mario\.m2\repository
 
-java -server -Xms512M -Xmx512M -cp %MAVEN_REPO%/cglib/cglib-nodep/2.2/cglib-nodep-2.2.jar;%MAVEN_REPO%/org/hamcrest/hamcrest-all/1.1/hamcrest-all-1.1.jar;%MAVEN_REPO%/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.jar;%MAVEN_REPO%/org/objenesis/objenesis/1.2/objenesis-1.2.jar;target/classes;target/test-classes ch.lambdaj.demo.LambdaDemoTestMain %1
+java -server -Xms512M -Xmx512M -cp %MAVEN_REPO%/cglib/cglib-nodep/2.2.2/cglib-nodep-2.2.2.jar;%MAVEN_REPO%/org/hamcrest/hamcrest-all/1.1/hamcrest-all-1.1.jar;%MAVEN_REPO%/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.jar;%MAVEN_REPO%/org/objenesis/objenesis/1.2/objenesis-1.2.jar;target/classes;target/test-classes ch.lambdaj.demo.LambdaDemoTestMain %1

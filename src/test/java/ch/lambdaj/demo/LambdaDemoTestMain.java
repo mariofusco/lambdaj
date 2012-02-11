@@ -81,7 +81,7 @@ public class LambdaDemoTestMain {
 	
 	private static long[] testPrintAllBrands() {
 		System.out.println("*** testPrintAllBrands");
-		long start = System.currentTimeMillis();
+		long start = System.nanoTime();
 
 		for (int i = 0; i < ITERATIONS; i++) {
 			StringBuilder sb = new StringBuilder();
@@ -90,22 +90,22 @@ public class LambdaDemoTestMain {
 			String brandsIterative = sb.substring(0, sb.length() - 2).toString();
 		}
 
-		long duration1 = System.currentTimeMillis() - start;
+		long duration1 = (System.nanoTime() - start) / 1000000;
 		System.out.println("iterative: " + duration1 + " msecs");
-		start = System.currentTimeMillis();
+		start = System.nanoTime();
 
 		for (int i = 0; i < ITERATIONS; i++) {
 			String brands = joinFrom(db.getCars()).getBrand();
 		}
 
-		long duration2 = System.currentTimeMillis() - start;
+		long duration2 = (System.nanoTime() - start) / 1000000;
 		System.out.println("lambdaj: " + duration2 + " msecs");
 		return new long[] {duration1, duration2};
 	}
 
 	private static long[] testFindAllSalesOfAFerrari() {
 		System.out.println("*** testFindAllSalesOfAFerrari");
-		long start = System.currentTimeMillis();
+		long start = System.nanoTime();
 
 		for (int i = 0; i < ITERATIONS; i++) {
 			List<Sale> salesIterative = new ArrayList<Sale>();
@@ -114,22 +114,22 @@ public class LambdaDemoTestMain {
 			}
 		}
 
-		long duration1 = System.currentTimeMillis() - start;
+		long duration1 = (System.nanoTime() - start) / 1000000;
 		System.out.println("iterative: " + duration1 + " msecs");
-		start = System.currentTimeMillis();
+		start = System.nanoTime();
 
 		for (int i = 0; i < ITERATIONS; i++) {
 			List<Sale> sales = select(db.getSales(), having(on(Sale.class).getCar().getBrand(), equalTo("Ferrari")));
 		}
 
-		long duration2 = System.currentTimeMillis() - start;
+		long duration2 = (System.nanoTime() - start) / 1000000;
 		System.out.println("lambdaj: " + duration2 + " msecs");
 		return new long[] {duration1, duration2};
 	}
 
 	private static long[] testFindAllBuysOfYoungestPerson() {
 		System.out.println("*** testFindAllBuysOfYoungestPerson");
-		long start = System.currentTimeMillis();
+		long start = System.nanoTime();
 
 		for (int i = 0; i < ITERATIONS; i++) {
 			Person youngest = null;
@@ -142,22 +142,22 @@ public class LambdaDemoTestMain {
 			}
 		}
 
-		long duration1 = System.currentTimeMillis() - start;
+		long duration1 = (System.nanoTime() - start) / 1000000;
 		System.out.println("iterative: " + duration1 + " msecs");
-		start = System.currentTimeMillis();
+		start = System.nanoTime();
 
 		for (int i = 0; i < ITERATIONS; i++) {
 			List<Sale> sales = select(db.getSales(), having(on(Sale.class).getBuyer(), equalTo(selectMin(db.getPersons(), on(Person.class).getAge()))));
 		}
 
-		long duration2 = System.currentTimeMillis() - start;
+		long duration2 = (System.nanoTime() - start) / 1000000;
 		System.out.println("lambdaj: " + duration2 + " msecs");
 		return new long[] {duration1, duration2};
 	}
 
 	private static long[] testFindMostCostlySaleValue() {
 		System.out.println("*** testFindMostCostlySaleValue");
-		long start = System.currentTimeMillis();
+		long start = System.nanoTime();
 
 		for (int i = 0; i < ITERATIONS; i++) {
 			double maxCost = 0.0;
@@ -167,22 +167,22 @@ public class LambdaDemoTestMain {
 			}
 		}
 
-		long duration1 = System.currentTimeMillis() - start;
+		long duration1 = (System.nanoTime() - start) / 1000000;
 		System.out.println("iterative: " + duration1 + " msecs");
-		start = System.currentTimeMillis();
+		start = System.nanoTime();
 
 		for (int i = 0; i < ITERATIONS; i++) {
 			double max = max(db.getSales(), on(Sale.class).getCost());
 		}
 
-		long duration2 = System.currentTimeMillis() - start;
+		long duration2 = (System.nanoTime() - start) / 1000000;
 		System.out.println("lambdaj: " + duration2 + " msecs");
 		return new long[] {duration1, duration2};
 	}
 
 	private static long[] testSumSalesCostWhereBothActorsAreAMale() {
 		System.out.println("*** testSumSalesCostWhereBothActorsAreAMale");
-		long start = System.currentTimeMillis();
+		long start = System.nanoTime();
 
 		for (int i = 0; i < ITERATIONS; i++) {
 			double sumIterative = 0.0;
@@ -192,22 +192,22 @@ public class LambdaDemoTestMain {
 			}
 		}
 
-		long duration1 = System.currentTimeMillis() - start;
+		long duration1 = (System.nanoTime() - start) / 1000000;
 		System.out.println("iterative: " + duration1 + " msecs");
-		start = System.currentTimeMillis();
+		start = System.nanoTime();
 
 		for (int i = 0; i < ITERATIONS; i++) {
 			double sum = sum(select(db.getSales(), having(on(Sale.class).getBuyer().isMale()).and(having(on(Sale.class).getSeller().isMale()))), on(Sale.class).getCost());
 		}
 
-		long duration2 = System.currentTimeMillis() - start;
+		long duration2 = (System.nanoTime() - start) / 1000000;
 		System.out.println("lambdaj: " + duration2 + " msecs");
 		return new long[] {duration1, duration2};
 	}
 
 	private static long[] testFindYoungestAgeOfWhoBoughtACarForMoreThan50000() {
 		System.out.println("*** testFindYoungestAgeOfWhoBoughtACarForMoreThan50000");
-		long start = System.currentTimeMillis();
+		long start = System.nanoTime();
 
 		for (int i = 0; i < ITERATIONS; i++) {
 			int ageIterative = Integer.MAX_VALUE;
@@ -220,22 +220,22 @@ public class LambdaDemoTestMain {
 			}
 		}
 
-		long duration1 = System.currentTimeMillis() - start;
+		long duration1 = (System.nanoTime() - start) / 1000000;
 		System.out.println("iterative: " + duration1 + " msecs");
-		start = System.currentTimeMillis();
+		start = System.nanoTime();
 
 		for (int i = 0; i < ITERATIONS; i++) {
 			int age = min(forEach(select(db.getSales(), having(on(Sale.class).getCost(), greaterThan(50000.00)))).getBuyer(), on(Person.class).getAge());
 		}
 
-		long duration2 = System.currentTimeMillis() - start;
+		long duration2 = (System.nanoTime() - start) / 1000000;
 		System.out.println("lambdaj: " + duration2 + " msecs");
 		return new long[] {duration1, duration2};
 	}
 
 	private static long[] testSortSalesByCost() {
 		System.out.println("*** testSortSalesByCost");
-		long start = System.currentTimeMillis();
+		long start = System.nanoTime();
 
 		for (int i = 0; i < ITERATIONS; i++) {
 			List<Sale> sortedSalesIterative = new ArrayList<Sale>(db.getSales());
@@ -246,23 +246,23 @@ public class LambdaDemoTestMain {
 			});
 		}
 
-		long duration1 = System.currentTimeMillis() - start;
+		long duration1 = (System.nanoTime() - start) / 1000000;
 		System.out.println("iterative: " + duration1 + " msecs");
-		start = System.currentTimeMillis();
+		start = System.nanoTime();
 
 		for (int i = 0; i < ITERATIONS; i++) {
 			List<Sale> sortedSales = sort(db.getSales(), on(Sale.class)
 					.getCost());
 		}
 
-		long duration2 = System.currentTimeMillis() - start;
+		long duration2 = (System.nanoTime() - start) / 1000000;
 		System.out.println("lambdaj: " + duration2 + " msecs");
 		return new long[] {duration1, duration2};
 	}
 
 	private static long[] testExtractCarsOriginalCost() {
 		System.out.println("*** testExtractCarsOriginalCost");
-		long start = System.currentTimeMillis();
+		long start = System.nanoTime();
 
 		for (int i = 0; i < ITERATIONS; i++) {
 			List<Double> costsIterative = new ArrayList<Double>();
@@ -270,22 +270,22 @@ public class LambdaDemoTestMain {
 				costsIterative.add(car.getOriginalValue());
 		}
 
-		long duration1 = System.currentTimeMillis() - start;
+		long duration1 = (System.nanoTime() - start) / 1000000;
 		System.out.println("iterative: " + duration1 + " msecs");
-		start = System.currentTimeMillis();
+		start = System.nanoTime();
 
 		for (int i = 0; i < ITERATIONS; i++) {
 			List<Double> costs = extract(db.getCars(), on(Car.class).getOriginalValue());
 		}
 
-		long duration2 = System.currentTimeMillis() - start;
+		long duration2 = (System.nanoTime() - start) / 1000000;
 		System.out.println("lambdaj: " + duration2 + " msecs");
 		return new long[] {duration1, duration2};
 	}
 
 	private static long[] testIndexCarsByBrand() {
 		System.out.println("*** testIndexCarsByBrand");
-		long start = System.currentTimeMillis();
+		long start = System.nanoTime();
 
 		for (int i = 0; i < ITERATIONS; i++) {
 			Map<String, Car> carsByBrandIterative = new HashMap<String, Car>();
@@ -293,22 +293,22 @@ public class LambdaDemoTestMain {
 				carsByBrandIterative.put(car.getBrand(), car);
 		}
 
-		long duration1 = System.currentTimeMillis() - start;
+		long duration1 = (System.nanoTime() - start) / 1000000;
 		System.out.println("iterative: " + duration1 + " msecs");
-		start = System.currentTimeMillis();
+		start = System.nanoTime();
 
 		for (int i = 0; i < ITERATIONS; i++) {
 			Map<String, Car> carsByBrand = index(db.getCars(), on(Car.class).getBrand());
 		}
 
-		long duration2 = System.currentTimeMillis() - start;
+		long duration2 = (System.nanoTime() - start) / 1000000;
 		System.out.println("lambdaj: " + duration2 + " msecs");
 		return new long[] {duration1, duration2};
 	}
 
 	private static long[] testGroupSalesByBuyersAndSellers() {
 		System.out.println("*** testGroupSalesByBuyersAndSellers");
-		long start = System.currentTimeMillis();
+		long start = System.nanoTime();
 
 		for (int i = 0; i < ITERATIONS; i++) {
 			Person youngestPerson = null;
@@ -333,9 +333,9 @@ public class LambdaDemoTestMain {
 
 		}
 
-		long duration1 = System.currentTimeMillis() - start;
+		long duration1 = (System.nanoTime() - start) / 1000000;
 		System.out.println("iterative: " + duration1 + " msecs");
-		start = System.currentTimeMillis();
+		start = System.nanoTime();
 
 		for (int i = 0; i < ITERATIONS; i++) {
 			Person youngest = selectMin(db.getPersons(), on(Person.class).getAge());
@@ -344,14 +344,14 @@ public class LambdaDemoTestMain {
 			Sale sale = group.findGroup(youngest).find(oldest).get(0);
 		}
 
-		long duration2 = System.currentTimeMillis() - start;
+		long duration2 = (System.nanoTime() - start) / 1000000;
 		System.out.println("lambdaj: " + duration2 + " msecs");
 		return new long[] {duration1, duration2};
 	}
 
 	private static long[] testFindMostBoughtCar() {
 		System.out.println("*** testFindMostBoughtCar");
-		long start = System.currentTimeMillis();
+		long start = System.nanoTime();
 
 		for (int i = 0; i < ITERATIONS; i++) {
 			Map<Car, Integer> carsBought = new LinkedHashMap<Car, Integer>();
@@ -371,9 +371,9 @@ public class LambdaDemoTestMain {
 
 		}
 
-		long duration1 = System.currentTimeMillis() - start;
+		long duration1 = (System.nanoTime() - start) / 1000000;
 		System.out.println("iterative: " + duration1 + " msecs");
-		start = System.currentTimeMillis();
+		start = System.nanoTime();
 
 		for (int i = 0; i < ITERATIONS; i++) {
 			Group<Sale> group = selectMax(group(db.getSales(), by(on(Sale.class).getCar())).subgroups(), on(Group.class).getSize());
@@ -381,7 +381,7 @@ public class LambdaDemoTestMain {
 			int boughtTimes = group.getSize();
 		}
 
-		long duration2 = System.currentTimeMillis() - start;
+		long duration2 = (System.nanoTime() - start) / 1000000;
 		System.out.println("lambdaj: " + duration2 + " msecs");
 		return new long[] {duration1, duration2};
 	}

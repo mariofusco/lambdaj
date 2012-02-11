@@ -35,7 +35,9 @@ import ch.lambdaj.group.*;
 public final class Lambda {
 
     private Lambda() { }
-	
+
+    public static int jitThreshold = 0;
+
 	/**
 	 * Constructs a proxy object that mocks the given Class registering all the subsequent invocations on the object.
 	 * @param clazz The class of the object to be mocked

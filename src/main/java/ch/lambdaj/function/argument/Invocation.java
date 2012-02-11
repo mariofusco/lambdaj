@@ -37,6 +37,10 @@ final class Invocation {
         }
     }
 
+    boolean hasArguments() {
+        return weakArgs != null;
+    }
+
     private Object[] getConcreteArgs() {
         if (weakArgs == null) return new Object[0];
         Object[] args = new Object[weakArgs.length];
@@ -77,14 +81,13 @@ final class Invocation {
      */
     @Override
     public String toString() {
+        if (weakArgs == null) return invokedMethod.toString();
         StringBuilder sb = new StringBuilder(invokedMethod.toString());
-        if (weakArgs != null) {
-            sb.append(" with args ");
-            boolean first = true;
-            for (ParameterReference arg : weakArgs) {
-                sb.append(first ? "" : ", ").append(arg.get());
-                first = false;
-            }
+        sb.append(" with args ");
+        boolean first = true;
+        for (ParameterReference arg : weakArgs) {
+            sb.append(first ? "" : ", ").append(arg.get());
+            first = false;
         }
         return sb.toString();
     }

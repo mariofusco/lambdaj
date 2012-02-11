@@ -28,7 +28,7 @@ public class InvocationSequenceTest {
     }
 
     @Test
-    public void sjekkProject() {
+    public void testProject() {
         Collection<Car> cars = asList(new Car("Ford", "F150", 2011, 200));
         assertThat(project(cars, SimpleBrand.class, on(Car.class)), hasItem(new SimpleBrand("Ford")));
         assertThat(project(cars, SimpleBrand.class, on(Car.class).getBrand()), hasItem(new SimpleBrand("Ford")));
