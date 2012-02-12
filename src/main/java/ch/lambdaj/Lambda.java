@@ -36,7 +36,7 @@ public final class Lambda {
 
     private Lambda() { }
 
-    public static int jitThreshold = 0;
+    public static int jitThreshold = -1;
 
 	/**
 	 * Constructs a proxy object that mocks the given Class registering all the subsequent invocations on the object.
@@ -177,12 +177,7 @@ public final class Lambda {
 	public static <T> List<? extends T> collect(Object iterable) {
 		List<T> collected = new LinkedList<T>();
         Iterator i = asIterator(iterable);
-		while (i.hasNext()) {
-            Object item = i.next();
-			if (item instanceof Iterable) collected.addAll((Collection<T>) collect(item));
-			else if (item instanceof Map) collected.addAll((Collection<T>) collect(((Map<?,?>)item).values()));
-			else collected.add((T)item);
-		}
+		while (i.hasNext()) collected.add((T)i.next());
 		return collected;
 	}
 	
