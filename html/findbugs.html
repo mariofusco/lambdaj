@@ -42,7 +42,7 @@
   
     
             <div class="xleft">
-        Last Published: 2011-05-20
+        Last Published: 2012-02-12
                       </div>
             <div class="xright">            <a href="">lambdaj</a>
             
@@ -159,7 +159,7 @@
     <div id="bodyColumn">
       <div id="contentBox">
         <div class="section"><h2>FindBugs Bug Detector Report</h2>
-<p>The following document contains the results of <a href="http://findbugs.sourceforge.net" class="externalLink">FindBugs Report</a></p>
+<p>The following document contains the results of <a class="externalLink" href="http://findbugs.sourceforge.net">FindBugs Report</a></p>
 <p>FindBugs Version is <i>1.2.1</i></p>
 <p>Threshold is <i>Low</i></p>
 <p>Effort is <i>Default</i></p>
@@ -170,8 +170,8 @@
 <th>Errors</th>
 <th>Missing Classes</th>
 </tr>
-<tr class="b"><td>423</td>
-<td>39</td>
+<tr class="b"><td>498</td>
+<td>45</td>
 <td>0</td>
 <td>0</td>
 </tr>
@@ -202,20 +202,26 @@
 <tr class="b"><td><a href="#ch.lambdaj.function.aggregate.ProxyAggregator">ch.lambdaj.function.aggregate.ProxyAggregator</a></td>
 <td>1</td>
 </tr>
-<tr class="a"><td><a href="#ch.lambdaj.function.argument.Invocation">ch.lambdaj.function.argument.Invocation</a></td>
+<tr class="a"><td><a href="#ch.lambdaj.function.argument.ArgumentsFactory">ch.lambdaj.function.argument.ArgumentsFactory</a></td>
+<td>1</td>
+</tr>
+<tr class="b"><td><a href="#ch.lambdaj.function.argument.Invocation">ch.lambdaj.function.argument.Invocation</a></td>
 <td>3</td>
 </tr>
-<tr class="b"><td><a href="#ch.lambdaj.function.argument.Invocation$ParameterReference">ch.lambdaj.function.argument.Invocation$ParameterReference</a></td>
+<tr class="a"><td><a href="#ch.lambdaj.function.argument.Invocation$ParameterReference">ch.lambdaj.function.argument.Invocation$ParameterReference</a></td>
 <td>1</td>
 </tr>
-<tr class="a"><td><a href="#ch.lambdaj.function.argument.Invocation$StrongParameterReference">ch.lambdaj.function.argument.Invocation$StrongParameterReference</a></td>
+<tr class="b"><td><a href="#ch.lambdaj.function.argument.Invocation$StrongParameterReference">ch.lambdaj.function.argument.Invocation$StrongParameterReference</a></td>
 <td>1</td>
 </tr>
-<tr class="b"><td><a href="#ch.lambdaj.function.argument.Invocation$WeakParameterReference">ch.lambdaj.function.argument.Invocation$WeakParameterReference</a></td>
+<tr class="a"><td><a href="#ch.lambdaj.function.argument.Invocation$WeakParameterReference">ch.lambdaj.function.argument.Invocation$WeakParameterReference</a></td>
 <td>1</td>
 </tr>
-<tr class="a"><td><a href="#ch.lambdaj.function.argument.InvocationSequence">ch.lambdaj.function.argument.InvocationSequence</a></td>
+<tr class="b"><td><a href="#ch.lambdaj.function.argument.InvocationSequence">ch.lambdaj.function.argument.InvocationSequence</a></td>
 <td>1</td>
+</tr>
+<tr class="a"><td><a href="#ch.lambdaj.function.argument.InvokerJitter">ch.lambdaj.function.argument.InvokerJitter</a></td>
+<td>2</td>
 </tr>
 <tr class="b"><td><a href="#ch.lambdaj.function.closure.AbstractClosure">ch.lambdaj.function.closure.AbstractClosure</a></td>
 <td>1</td>
@@ -226,245 +232,285 @@
 <tr class="b"><td><a href="#ch.lambdaj.function.compare.ComparatorUtil$DefaultArgumentComparator">ch.lambdaj.function.compare.ComparatorUtil$DefaultArgumentComparator</a></td>
 <td>1</td>
 </tr>
-<tr class="a"><td><a href="#ch.lambdaj.function.compare.PropertyComparator">ch.lambdaj.function.compare.PropertyComparator</a></td>
+<tr class="a"><td><a href="#ch.lambdaj.function.compare.ComparatorUtil$DescendingArgumentComparator">ch.lambdaj.function.compare.ComparatorUtil$DescendingArgumentComparator</a></td>
 <td>1</td>
 </tr>
-<tr class="b"><td><a href="#ch.lambdaj.function.convert.ConstructorArgumentConverter">ch.lambdaj.function.convert.ConstructorArgumentConverter</a></td>
+<tr class="b"><td><a href="#ch.lambdaj.function.compare.ComparatorUtil$DescendingIgnoreCaseArgumentComparator">ch.lambdaj.function.compare.ComparatorUtil$DescendingIgnoreCaseArgumentComparator</a></td>
 <td>1</td>
 </tr>
-<tr class="a"><td><a href="#ch.lambdaj.function.convert.ProjectConverter">ch.lambdaj.function.convert.ProjectConverter</a></td>
+<tr class="a"><td><a href="#ch.lambdaj.function.compare.ComparatorUtil$IgnoreCaseArgumentComparator">ch.lambdaj.function.compare.ComparatorUtil$IgnoreCaseArgumentComparator</a></td>
 <td>1</td>
 </tr>
-<tr class="b"><td><a href="#ch.lambdaj.group.GroupComparator">ch.lambdaj.group.GroupComparator</a></td>
+<tr class="b"><td><a href="#ch.lambdaj.function.compare.PropertyComparator">ch.lambdaj.function.compare.PropertyComparator</a></td>
+<td>1</td>
+</tr>
+<tr class="a"><td><a href="#ch.lambdaj.function.convert.ConstructorArgumentConverter">ch.lambdaj.function.convert.ConstructorArgumentConverter</a></td>
+<td>1</td>
+</tr>
+<tr class="b"><td><a href="#ch.lambdaj.function.convert.ProjectConverter">ch.lambdaj.function.convert.ProjectConverter</a></td>
+<td>1</td>
+</tr>
+<tr class="a"><td><a href="#ch.lambdaj.group.GroupComparator">ch.lambdaj.group.GroupComparator</a></td>
 <td>2</td>
 </tr>
-<tr class="a"><td><a href="#ch.lambdaj.group.GroupImpl">ch.lambdaj.group.GroupImpl</a></td>
+<tr class="b"><td><a href="#ch.lambdaj.group.GroupImpl">ch.lambdaj.group.GroupImpl</a></td>
 <td>1</td>
 </tr>
-<tr class="b"><td><a href="#ch.lambdaj.proxy.ProxyIterator">ch.lambdaj.proxy.ProxyIterator</a></td>
+<tr class="a"><td><a href="#ch.lambdaj.proxy.ProxyIterator">ch.lambdaj.proxy.ProxyIterator</a></td>
 <td>1</td>
 </tr>
-<tr class="a"><td><a href="#ch.lambdaj.util.IntrospectionUtil">ch.lambdaj.util.IntrospectionUtil</a></td>
+<tr class="b"><td><a href="#ch.lambdaj.util.IntrospectionUtil">ch.lambdaj.util.IntrospectionUtil</a></td>
 <td>3</td>
 </tr>
-<tr class="b"><td><a href="#ch.lambdaj.util.iterator.ResettableIteratorOnArray">ch.lambdaj.util.iterator.ResettableIteratorOnArray</a></td>
+<tr class="a"><td><a href="#ch.lambdaj.util.iterator.ResettableIteratorOnArray">ch.lambdaj.util.iterator.ResettableIteratorOnArray</a></td>
 <td>1</td>
 </tr>
 </table>
 </div>
 <a name="ch.lambdaj.collection.LambdaCollection"></a><div class="section"><h3>ch.lambdaj.collection.LambdaCollection</h3>
-<table class="bodyTable"><tr class="a"><th>Bug</th>
+<table class="bodyTable"><tr class="b"><th>Bug</th>
 <th>Category</th>
 <th>Details</th>
 <th>Line</th>
 </tr>
-<tr class="b"><td>ch.lambdaj.collection.LambdaCollection.clone() does not call super.clone()</td>
+<tr class="a"><td>ch.lambdaj.collection.LambdaCollection.clone() does not call super.clone()</td>
 <td>BAD_PRACTICE</td>
-<td><a href="http://findbugs.sourceforge.net/bugDescriptions.html#CN_IDIOM_NO_SUPER_CALL" class="externalLink">CN_IDIOM_NO_SUPER_CALL</a></td>
+<td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#CN_IDIOM_NO_SUPER_CALL">CN_IDIOM_NO_SUPER_CALL</a></td>
 <td>20</td>
 </tr>
-<tr class="a"><td>Class ch.lambdaj.collection.LambdaCollection implements same interface as superclass</td>
+<tr class="b"><td>Class ch.lambdaj.collection.LambdaCollection implements same interface as superclass</td>
 <td>STYLE</td>
-<td><a href="http://findbugs.sourceforge.net/bugDescriptions.html#RI_REDUNDANT_INTERFACES" class="externalLink">RI_REDUNDANT_INTERFACES</a></td>
-<td>20-214</td>
+<td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#RI_REDUNDANT_INTERFACES">RI_REDUNDANT_INTERFACES</a></td>
+<td>20-223</td>
 </tr>
-<tr class="b"><td>ch.lambdaj.collection.LambdaCollection is Serializable; consider declaring a serialVersionUID</td>
+<tr class="a"><td>ch.lambdaj.collection.LambdaCollection is Serializable; consider declaring a serialVersionUID</td>
 <td>BAD_PRACTICE</td>
-<td><a href="http://findbugs.sourceforge.net/bugDescriptions.html#SE_NO_SERIALVERSIONID" class="externalLink">SE_NO_SERIALVERSIONID</a></td>
-<td>20-214</td>
+<td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#SE_NO_SERIALVERSIONID">SE_NO_SERIALVERSIONID</a></td>
+<td>20-223</td>
 </tr>
 </table>
 </div>
 <a name="ch.lambdaj.collection.LambdaIterable"></a><div class="section"><h3>ch.lambdaj.collection.LambdaIterable</h3>
-<table class="bodyTable"><tr class="a"><th>Bug</th>
+<table class="bodyTable"><tr class="b"><th>Bug</th>
 <th>Category</th>
 <th>Details</th>
 <th>Line</th>
 </tr>
-<tr class="b"><td>ch.lambdaj.collection.LambdaIterable.clone() does not call super.clone()</td>
+<tr class="a"><td>ch.lambdaj.collection.LambdaIterable.clone() does not call super.clone()</td>
 <td>BAD_PRACTICE</td>
-<td><a href="http://findbugs.sourceforge.net/bugDescriptions.html#CN_IDIOM_NO_SUPER_CALL" class="externalLink">CN_IDIOM_NO_SUPER_CALL</a></td>
+<td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#CN_IDIOM_NO_SUPER_CALL">CN_IDIOM_NO_SUPER_CALL</a></td>
 <td>24</td>
 </tr>
-<tr class="a"><td>ch.lambdaj.collection.LambdaIterable is Serializable; consider declaring a serialVersionUID</td>
+<tr class="b"><td>ch.lambdaj.collection.LambdaIterable is Serializable; consider declaring a serialVersionUID</td>
 <td>BAD_PRACTICE</td>
-<td><a href="http://findbugs.sourceforge.net/bugDescriptions.html#SE_NO_SERIALVERSIONID" class="externalLink">SE_NO_SERIALVERSIONID</a></td>
-<td>24-238</td>
+<td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#SE_NO_SERIALVERSIONID">SE_NO_SERIALVERSIONID</a></td>
+<td>24-253</td>
 </tr>
-<tr class="b"><td>ch.lambdaj.collection.LambdaIterable is Serializable  but its superclass doesn't define an accessible void constructor</td>
+<tr class="a"><td>ch.lambdaj.collection.LambdaIterable is Serializable  but its superclass doesn't define an accessible void constructor</td>
 <td>BAD_PRACTICE</td>
-<td><a href="http://findbugs.sourceforge.net/bugDescriptions.html#SE_NO_SUITABLE_CONSTRUCTOR" class="externalLink">SE_NO_SUITABLE_CONSTRUCTOR</a></td>
-<td>24-238</td>
+<td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#SE_NO_SUITABLE_CONSTRUCTOR">SE_NO_SUITABLE_CONSTRUCTOR</a></td>
+<td>24-253</td>
 </tr>
 </table>
 </div>
 <a name="ch.lambdaj.collection.LambdaIterator"></a><div class="section"><h3>ch.lambdaj.collection.LambdaIterator</h3>
-<table class="bodyTable"><tr class="a"><th>Bug</th>
+<table class="bodyTable"><tr class="b"><th>Bug</th>
 <th>Category</th>
 <th>Details</th>
 <th>Line</th>
 </tr>
-<tr class="b"><td>ch.lambdaj.collection.LambdaIterator is Serializable; consider declaring a serialVersionUID</td>
+<tr class="a"><td>ch.lambdaj.collection.LambdaIterator is Serializable; consider declaring a serialVersionUID</td>
 <td>BAD_PRACTICE</td>
-<td><a href="http://findbugs.sourceforge.net/bugDescriptions.html#SE_NO_SERIALVERSIONID" class="externalLink">SE_NO_SERIALVERSIONID</a></td>
+<td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#SE_NO_SERIALVERSIONID">SE_NO_SERIALVERSIONID</a></td>
 <td>20-76</td>
 </tr>
-<tr class="a"><td>ch.lambdaj.collection.LambdaIterator is Serializable  but its superclass doesn't define an accessible void constructor</td>
+<tr class="b"><td>ch.lambdaj.collection.LambdaIterator is Serializable  but its superclass doesn't define an accessible void constructor</td>
 <td>BAD_PRACTICE</td>
-<td><a href="http://findbugs.sourceforge.net/bugDescriptions.html#SE_NO_SUITABLE_CONSTRUCTOR" class="externalLink">SE_NO_SUITABLE_CONSTRUCTOR</a></td>
+<td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#SE_NO_SUITABLE_CONSTRUCTOR">SE_NO_SUITABLE_CONSTRUCTOR</a></td>
 <td>20-76</td>
 </tr>
 </table>
 </div>
 <a name="ch.lambdaj.collection.LambdaList"></a><div class="section"><h3>ch.lambdaj.collection.LambdaList</h3>
-<table class="bodyTable"><tr class="b"><th>Bug</th>
+<table class="bodyTable"><tr class="a"><th>Bug</th>
 <th>Category</th>
 <th>Details</th>
 <th>Line</th>
 </tr>
-<tr class="a"><td>ch.lambdaj.collection.LambdaList.clone() does not call super.clone()</td>
+<tr class="b"><td>ch.lambdaj.collection.LambdaList.clone() does not call super.clone()</td>
 <td>BAD_PRACTICE</td>
-<td><a href="http://findbugs.sourceforge.net/bugDescriptions.html#CN_IDIOM_NO_SUPER_CALL" class="externalLink">CN_IDIOM_NO_SUPER_CALL</a></td>
+<td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#CN_IDIOM_NO_SUPER_CALL">CN_IDIOM_NO_SUPER_CALL</a></td>
 <td>19</td>
 </tr>
-<tr class="b"><td>Class ch.lambdaj.collection.LambdaList implements same interface as superclass</td>
+<tr class="a"><td>Class ch.lambdaj.collection.LambdaList implements same interface as superclass</td>
 <td>STYLE</td>
-<td><a href="http://findbugs.sourceforge.net/bugDescriptions.html#RI_REDUNDANT_INTERFACES" class="externalLink">RI_REDUNDANT_INTERFACES</a></td>
-<td>19-179</td>
+<td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#RI_REDUNDANT_INTERFACES">RI_REDUNDANT_INTERFACES</a></td>
+<td>19-188</td>
 </tr>
-<tr class="a"><td>ch.lambdaj.collection.LambdaList is Serializable; consider declaring a serialVersionUID</td>
+<tr class="b"><td>ch.lambdaj.collection.LambdaList is Serializable; consider declaring a serialVersionUID</td>
 <td>BAD_PRACTICE</td>
-<td><a href="http://findbugs.sourceforge.net/bugDescriptions.html#SE_NO_SERIALVERSIONID" class="externalLink">SE_NO_SERIALVERSIONID</a></td>
-<td>19-179</td>
+<td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#SE_NO_SERIALVERSIONID">SE_NO_SERIALVERSIONID</a></td>
+<td>19-188</td>
 </tr>
 </table>
 </div>
 <a name="ch.lambdaj.collection.LambdaMap"></a><div class="section"><h3>ch.lambdaj.collection.LambdaMap</h3>
-<table class="bodyTable"><tr class="b"><th>Bug</th>
+<table class="bodyTable"><tr class="a"><th>Bug</th>
 <th>Category</th>
 <th>Details</th>
 <th>Line</th>
 </tr>
-<tr class="a"><td>ch.lambdaj.collection.LambdaMap.clone() does not call super.clone()</td>
+<tr class="b"><td>ch.lambdaj.collection.LambdaMap.clone() does not call super.clone()</td>
 <td>BAD_PRACTICE</td>
-<td><a href="http://findbugs.sourceforge.net/bugDescriptions.html#CN_IDIOM_NO_SUPER_CALL" class="externalLink">CN_IDIOM_NO_SUPER_CALL</a></td>
+<td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#CN_IDIOM_NO_SUPER_CALL">CN_IDIOM_NO_SUPER_CALL</a></td>
 <td>22</td>
 </tr>
-<tr class="b"><td>ch.lambdaj.collection.LambdaMap is Serializable; consider declaring a serialVersionUID</td>
+<tr class="a"><td>ch.lambdaj.collection.LambdaMap is Serializable; consider declaring a serialVersionUID</td>
 <td>BAD_PRACTICE</td>
-<td><a href="http://findbugs.sourceforge.net/bugDescriptions.html#SE_NO_SERIALVERSIONID" class="externalLink">SE_NO_SERIALVERSIONID</a></td>
+<td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#SE_NO_SERIALVERSIONID">SE_NO_SERIALVERSIONID</a></td>
 <td>22-227</td>
 </tr>
 </table>
 </div>
 <a name="ch.lambdaj.collection.LambdaSet"></a><div class="section"><h3>ch.lambdaj.collection.LambdaSet</h3>
-<table class="bodyTable"><tr class="a"><th>Bug</th>
+<table class="bodyTable"><tr class="b"><th>Bug</th>
 <th>Category</th>
 <th>Details</th>
 <th>Line</th>
 </tr>
-<tr class="b"><td>ch.lambdaj.collection.LambdaSet.clone() does not call super.clone()</td>
+<tr class="a"><td>ch.lambdaj.collection.LambdaSet.clone() does not call super.clone()</td>
 <td>BAD_PRACTICE</td>
-<td><a href="http://findbugs.sourceforge.net/bugDescriptions.html#CN_IDIOM_NO_SUPER_CALL" class="externalLink">CN_IDIOM_NO_SUPER_CALL</a></td>
+<td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#CN_IDIOM_NO_SUPER_CALL">CN_IDIOM_NO_SUPER_CALL</a></td>
 <td>17</td>
 </tr>
-<tr class="a"><td>Class ch.lambdaj.collection.LambdaSet implements same interface as superclass</td>
+<tr class="b"><td>Class ch.lambdaj.collection.LambdaSet implements same interface as superclass</td>
 <td>STYLE</td>
-<td><a href="http://findbugs.sourceforge.net/bugDescriptions.html#RI_REDUNDANT_INTERFACES" class="externalLink">RI_REDUNDANT_INTERFACES</a></td>
+<td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#RI_REDUNDANT_INTERFACES">RI_REDUNDANT_INTERFACES</a></td>
 <td>17-53</td>
 </tr>
-<tr class="b"><td>ch.lambdaj.collection.LambdaSet is Serializable; consider declaring a serialVersionUID</td>
+<tr class="a"><td>ch.lambdaj.collection.LambdaSet is Serializable; consider declaring a serialVersionUID</td>
 <td>BAD_PRACTICE</td>
-<td><a href="http://findbugs.sourceforge.net/bugDescriptions.html#SE_NO_SERIALVERSIONID" class="externalLink">SE_NO_SERIALVERSIONID</a></td>
+<td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#SE_NO_SERIALVERSIONID">SE_NO_SERIALVERSIONID</a></td>
 <td>17-53</td>
 </tr>
 </table>
 </div>
 <a name="ch.lambdaj.function.aggregate.ProxyAggregator"></a><div class="section"><h3>ch.lambdaj.function.aggregate.ProxyAggregator</h3>
-<table class="bodyTable"><tr class="a"><th>Bug</th>
+<table class="bodyTable"><tr class="b"><th>Bug</th>
 <th>Category</th>
 <th>Details</th>
 <th>Line</th>
 </tr>
-<tr class="b"><td>Load of known null value in ch.lambdaj.function.aggregate.ProxyAggregator.normalizeResult(Class, Object)</td>
+<tr class="a"><td>Load of known null value in ch.lambdaj.function.aggregate.ProxyAggregator.normalizeResult(Class, Object)</td>
 <td>STYLE</td>
-<td><a href="http://findbugs.sourceforge.net/bugDescriptions.html#NP_LOAD_OF_KNOWN_NULL_VALUE" class="externalLink">NP_LOAD_OF_KNOWN_NULL_VALUE</a></td>
+<td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#NP_LOAD_OF_KNOWN_NULL_VALUE">NP_LOAD_OF_KNOWN_NULL_VALUE</a></td>
 <td>34</td>
 </tr>
 </table>
 </div>
-<a name="ch.lambdaj.function.argument.Invocation"></a><div class="section"><h3>ch.lambdaj.function.argument.Invocation</h3>
-<table class="bodyTable"><tr class="a"><th>Bug</th>
+<a name="ch.lambdaj.function.argument.ArgumentsFactory"></a><div class="section"><h3>ch.lambdaj.function.argument.ArgumentsFactory</h3>
+<table class="bodyTable"><tr class="b"><th>Bug</th>
 <th>Category</th>
 <th>Details</th>
 <th>Line</th>
 </tr>
-<tr class="b"><td>Equals method for ch.lambdaj.function.argument.Invocation assumes the argument is of type Invocation</td>
-<td>BAD_PRACTICE</td>
-<td><a href="http://findbugs.sourceforge.net/bugDescriptions.html#BC_EQUALS_METHOD_SHOULD_WORK_FOR_ALL_OBJECTS" class="externalLink">BC_EQUALS_METHOD_SHOULD_WORK_FOR_ALL_OBJECTS</a></td>
-<td>108</td>
+<tr class="a"><td>Method ch.lambdaj.function.argument.ArgumentsFactory.getPrimitivePlaceHolder(Class, Integer) invokes inefficient Float(float) constructor; use Float.valueOf(float) instead</td>
+<td>PERFORMANCE</td>
+<td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#DM_FP_NUMBER_CTOR">DM_FP_NUMBER_CTOR</a></td>
+<td>242</td>
 </tr>
-<tr class="a"><td>ch.lambdaj.function.argument.Invocation.Invocation(Class, Method, Object[]) invokes java.lang.reflect.Method.setAccessible(boolean), which should be invoked from within a doPrivileged block</td>
+</table>
+</div>
+<a name="ch.lambdaj.function.argument.Invocation"></a><div class="section"><h3>ch.lambdaj.function.argument.Invocation</h3>
+<table class="bodyTable"><tr class="b"><th>Bug</th>
+<th>Category</th>
+<th>Details</th>
+<th>Line</th>
+</tr>
+<tr class="a"><td>Equals method for ch.lambdaj.function.argument.Invocation assumes the argument is of type Invocation</td>
 <td>BAD_PRACTICE</td>
-<td><a href="http://findbugs.sourceforge.net/bugDescriptions.html#DP_DO_INSIDE_DO_PRIVILEGED" class="externalLink">DP_DO_INSIDE_DO_PRIVILEGED</a></td>
+<td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#BC_EQUALS_METHOD_SHOULD_WORK_FOR_ALL_OBJECTS">BC_EQUALS_METHOD_SHOULD_WORK_FOR_ALL_OBJECTS</a></td>
+<td>112</td>
+</tr>
+<tr class="b"><td>ch.lambdaj.function.argument.Invocation.Invocation(Class, Method, Object[]) invokes java.lang.reflect.Method.setAccessible(boolean), which should be invoked from within a doPrivileged block</td>
+<td>BAD_PRACTICE</td>
+<td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#DP_DO_INSIDE_DO_PRIVILEGED">DP_DO_INSIDE_DO_PRIVILEGED</a></td>
 <td>31</td>
 </tr>
-<tr class="b"><td>ch.lambdaj.function.argument.Invocation.equals(Object) does not check for null argument</td>
+<tr class="a"><td>ch.lambdaj.function.argument.Invocation.equals(Object) does not check for null argument</td>
 <td>BAD_PRACTICE</td>
-<td><a href="http://findbugs.sourceforge.net/bugDescriptions.html#NP_EQUALS_SHOULD_HANDLE_NULL_ARGUMENT" class="externalLink">NP_EQUALS_SHOULD_HANDLE_NULL_ARGUMENT</a></td>
-<td>109</td>
+<td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#NP_EQUALS_SHOULD_HANDLE_NULL_ARGUMENT">NP_EQUALS_SHOULD_HANDLE_NULL_ARGUMENT</a></td>
+<td>113</td>
 </tr>
 </table>
 </div>
 <a name="ch.lambdaj.function.argument.InvocationParameterReference"></a><div class="section"><h3>ch.lambdaj.function.argument.Invocation$ParameterReference</h3>
-<table class="bodyTable"><tr class="a"><th>Bug</th>
+<table class="bodyTable"><tr class="b"><th>Bug</th>
 <th>Category</th>
 <th>Details</th>
 <th>Line</th>
 </tr>
-<tr class="b"><td>ch.lambdaj.function.argument.Invocation$ParameterReference defines equals and uses Object.hashCode()</td>
+<tr class="a"><td>ch.lambdaj.function.argument.Invocation$ParameterReference defines equals and uses Object.hashCode()</td>
 <td>BAD_PRACTICE</td>
-<td><a href="http://findbugs.sourceforge.net/bugDescriptions.html#HE_EQUALS_USE_HASHCODE" class="externalLink">HE_EQUALS_USE_HASHCODE</a></td>
-<td>124</td>
+<td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#HE_EQUALS_USE_HASHCODE">HE_EQUALS_USE_HASHCODE</a></td>
+<td>128</td>
 </tr>
 </table>
 </div>
 <a name="ch.lambdaj.function.argument.InvocationStrongParameterReference"></a><div class="section"><h3>ch.lambdaj.function.argument.Invocation$StrongParameterReference</h3>
-<table class="bodyTable"><tr class="a"><th>Bug</th>
+<table class="bodyTable"><tr class="b"><th>Bug</th>
 <th>Category</th>
 <th>Details</th>
 <th>Line</th>
 </tr>
-<tr class="b"><td>ch.lambdaj.function.argument.Invocation$StrongParameterReference inherits equals and uses Object.hashCode()</td>
+<tr class="a"><td>ch.lambdaj.function.argument.Invocation$StrongParameterReference inherits equals and uses Object.hashCode()</td>
 <td>BAD_PRACTICE</td>
-<td><a href="http://findbugs.sourceforge.net/bugDescriptions.html#HE_INHERITS_EQUALS_USE_HASHCODE" class="externalLink">HE_INHERITS_EQUALS_USE_HASHCODE</a></td>
-<td>128-136</td>
+<td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#HE_INHERITS_EQUALS_USE_HASHCODE">HE_INHERITS_EQUALS_USE_HASHCODE</a></td>
+<td>132-140</td>
 </tr>
 </table>
 </div>
 <a name="ch.lambdaj.function.argument.InvocationWeakParameterReference"></a><div class="section"><h3>ch.lambdaj.function.argument.Invocation$WeakParameterReference</h3>
-<table class="bodyTable"><tr class="a"><th>Bug</th>
+<table class="bodyTable"><tr class="b"><th>Bug</th>
 <th>Category</th>
 <th>Details</th>
 <th>Line</th>
 </tr>
-<tr class="b"><td>ch.lambdaj.function.argument.Invocation$WeakParameterReference inherits equals and uses Object.hashCode()</td>
+<tr class="a"><td>ch.lambdaj.function.argument.Invocation$WeakParameterReference inherits equals and uses Object.hashCode()</td>
 <td>BAD_PRACTICE</td>
-<td><a href="http://findbugs.sourceforge.net/bugDescriptions.html#HE_INHERITS_EQUALS_USE_HASHCODE" class="externalLink">HE_INHERITS_EQUALS_USE_HASHCODE</a></td>
-<td>140-148</td>
+<td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#HE_INHERITS_EQUALS_USE_HASHCODE">HE_INHERITS_EQUALS_USE_HASHCODE</a></td>
+<td>144-152</td>
 </tr>
 </table>
 </div>
 <a name="ch.lambdaj.function.argument.InvocationSequence"></a><div class="section"><h3>ch.lambdaj.function.argument.InvocationSequence</h3>
-<table class="bodyTable"><tr class="a"><th>Bug</th>
+<table class="bodyTable"><tr class="b"><th>Bug</th>
 <th>Category</th>
 <th>Details</th>
 <th>Line</th>
 </tr>
-<tr class="b"><td>Equals method for ch.lambdaj.function.argument.InvocationSequence assumes the argument is of type InvocationSequence</td>
+<tr class="a"><td>Equals method for ch.lambdaj.function.argument.InvocationSequence assumes the argument is of type InvocationSequence</td>
 <td>BAD_PRACTICE</td>
-<td><a href="http://findbugs.sourceforge.net/bugDescriptions.html#BC_EQUALS_METHOD_SHOULD_WORK_FOR_ALL_OBJECTS" class="externalLink">BC_EQUALS_METHOD_SHOULD_WORK_FOR_ALL_OBJECTS</a></td>
-<td>64</td>
+<td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#BC_EQUALS_METHOD_SHOULD_WORK_FOR_ALL_OBJECTS">BC_EQUALS_METHOD_SHOULD_WORK_FOR_ALL_OBJECTS</a></td>
+<td>101</td>
+</tr>
+</table>
+</div>
+<a name="ch.lambdaj.function.argument.InvokerJitter"></a><div class="section"><h3>ch.lambdaj.function.argument.InvokerJitter</h3>
+<table class="bodyTable"><tr class="b"><th>Bug</th>
+<th>Category</th>
+<th>Details</th>
+<th>Line</th>
+</tr>
+<tr class="a"><td>ch.lambdaj.function.argument.InvokerJitter.InvokerJitter(ClassLoader, InvocationSequence) creates a ch.lambdaj.function.argument.InvokerJitter$InternalClassLoader classloader, which should be performed within a doPrivileged block</td>
+<td>BAD_PRACTICE</td>
+<td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#DP_CREATE_CLASSLOADER_INSIDE_DO_PRIVILEGED">DP_CREATE_CLASSLOADER_INSIDE_DO_PRIVILEGED</a></td>
+<td>28</td>
+</tr>
+<tr class="b"><td>Exception is caught when Exception is not thrown in ch.lambdaj.function.argument.InvokerJitter.jitInvoker()</td>
+<td>STYLE</td>
+<td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#REC_CATCH_EXCEPTION">REC_CATCH_EXCEPTION</a></td>
+<td>37</td>
 </tr>
 </table>
 </div>
@@ -476,7 +522,7 @@
 </tr>
 <tr class="b"><td>ch.lambdaj.function.closure.AbstractClosure.bindInvocation(Method, Object[]) invokes java.lang.reflect.Method.setAccessible(boolean), which should be invoked from within a doPrivileged block</td>
 <td>BAD_PRACTICE</td>
-<td><a href="http://findbugs.sourceforge.net/bugDescriptions.html#DP_DO_INSIDE_DO_PRIVILEGED" class="externalLink">DP_DO_INSIDE_DO_PRIVILEGED</a></td>
+<td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#DP_DO_INSIDE_DO_PRIVILEGED">DP_DO_INSIDE_DO_PRIVILEGED</a></td>
 <td>125</td>
 </tr>
 </table>
@@ -489,13 +535,13 @@
 </tr>
 <tr class="b"><td>Class ch.lambdaj.function.compare.ArgumentComparator defines non-transient non-serializable instance field argument</td>
 <td>BAD_PRACTICE</td>
-<td><a href="http://findbugs.sourceforge.net/bugDescriptions.html#SE_BAD_FIELD" class="externalLink">SE_BAD_FIELD</a></td>
+<td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#SE_BAD_FIELD">SE_BAD_FIELD</a></td>
 <td>Not available</td>
 </tr>
 <tr class="a"><td>ch.lambdaj.function.compare.ArgumentComparator is Serializable; consider declaring a serialVersionUID</td>
 <td>BAD_PRACTICE</td>
-<td><a href="http://findbugs.sourceforge.net/bugDescriptions.html#SE_NO_SERIALVERSIONID" class="externalLink">SE_NO_SERIALVERSIONID</a></td>
-<td>29-64</td>
+<td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#SE_NO_SERIALVERSIONID">SE_NO_SERIALVERSIONID</a></td>
+<td>29-65</td>
 </tr>
 </table>
 </div>
@@ -507,8 +553,47 @@
 </tr>
 <tr class="a"><td>ch.lambdaj.function.compare.ComparatorUtil$DefaultArgumentComparator is Serializable; consider declaring a serialVersionUID</td>
 <td>BAD_PRACTICE</td>
-<td><a href="http://findbugs.sourceforge.net/bugDescriptions.html#SE_NO_SERIALVERSIONID" class="externalLink">SE_NO_SERIALVERSIONID</a></td>
-<td>35-41</td>
+<td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#SE_NO_SERIALVERSIONID">SE_NO_SERIALVERSIONID</a></td>
+<td>48-55</td>
+</tr>
+</table>
+</div>
+<a name="ch.lambdaj.function.compare.ComparatorUtilDescendingArgumentComparator"></a><div class="section"><h3>ch.lambdaj.function.compare.ComparatorUtil$DescendingArgumentComparator</h3>
+<table class="bodyTable"><tr class="b"><th>Bug</th>
+<th>Category</th>
+<th>Details</th>
+<th>Line</th>
+</tr>
+<tr class="a"><td>ch.lambdaj.function.compare.ComparatorUtil$DescendingArgumentComparator is Serializable; consider declaring a serialVersionUID</td>
+<td>BAD_PRACTICE</td>
+<td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#SE_NO_SERIALVERSIONID">SE_NO_SERIALVERSIONID</a></td>
+<td>60-67</td>
+</tr>
+</table>
+</div>
+<a name="ch.lambdaj.function.compare.ComparatorUtilDescendingIgnoreCaseArgumentComparator"></a><div class="section"><h3>ch.lambdaj.function.compare.ComparatorUtil$DescendingIgnoreCaseArgumentComparator</h3>
+<table class="bodyTable"><tr class="b"><th>Bug</th>
+<th>Category</th>
+<th>Details</th>
+<th>Line</th>
+</tr>
+<tr class="a"><td>ch.lambdaj.function.compare.ComparatorUtil$DescendingIgnoreCaseArgumentComparator is Serializable; consider declaring a serialVersionUID</td>
+<td>BAD_PRACTICE</td>
+<td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#SE_NO_SERIALVERSIONID">SE_NO_SERIALVERSIONID</a></td>
+<td>84-90</td>
+</tr>
+</table>
+</div>
+<a name="ch.lambdaj.function.compare.ComparatorUtilIgnoreCaseArgumentComparator"></a><div class="section"><h3>ch.lambdaj.function.compare.ComparatorUtil$IgnoreCaseArgumentComparator</h3>
+<table class="bodyTable"><tr class="b"><th>Bug</th>
+<th>Category</th>
+<th>Details</th>
+<th>Line</th>
+</tr>
+<tr class="a"><td>ch.lambdaj.function.compare.ComparatorUtil$IgnoreCaseArgumentComparator is Serializable; consider declaring a serialVersionUID</td>
+<td>BAD_PRACTICE</td>
+<td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#SE_NO_SERIALVERSIONID">SE_NO_SERIALVERSIONID</a></td>
+<td>72-79</td>
 </tr>
 </table>
 </div>
@@ -520,7 +605,7 @@
 </tr>
 <tr class="a"><td>ch.lambdaj.function.compare.PropertyComparator is Serializable; consider declaring a serialVersionUID</td>
 <td>BAD_PRACTICE</td>
-<td><a href="http://findbugs.sourceforge.net/bugDescriptions.html#SE_NO_SERIALVERSIONID" class="externalLink">SE_NO_SERIALVERSIONID</a></td>
+<td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#SE_NO_SERIALVERSIONID">SE_NO_SERIALVERSIONID</a></td>
 <td>25-34</td>
 </tr>
 </table>
@@ -533,7 +618,7 @@
 </tr>
 <tr class="a"><td>Exception is caught when Exception is not thrown in ch.lambdaj.function.convert.ConstructorArgumentConverter.isCompatible(Constructor, Object[])</td>
 <td>STYLE</td>
-<td><a href="http://findbugs.sourceforge.net/bugDescriptions.html#REC_CATCH_EXCEPTION" class="externalLink">REC_CATCH_EXCEPTION</a></td>
+<td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#REC_CATCH_EXCEPTION">REC_CATCH_EXCEPTION</a></td>
 <td>42</td>
 </tr>
 </table>
@@ -546,7 +631,7 @@
 </tr>
 <tr class="a"><td>ch.lambdaj.function.convert.ProjectConverter.ProjectConverter(Converter[]) may expose internal representation by storing an externally mutable object into ProjectConverter.projectors</td>
 <td>MALICIOUS_CODE</td>
-<td><a href="http://findbugs.sourceforge.net/bugDescriptions.html#EI_EXPOSE_REP2" class="externalLink">EI_EXPOSE_REP2</a></td>
+<td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#EI_EXPOSE_REP2">EI_EXPOSE_REP2</a></td>
 <td>22</td>
 </tr>
 </table>
@@ -559,12 +644,12 @@
 </tr>
 <tr class="a"><td>Class ch.lambdaj.group.GroupComparator defines non-transient non-serializable instance field argument</td>
 <td>BAD_PRACTICE</td>
-<td><a href="http://findbugs.sourceforge.net/bugDescriptions.html#SE_BAD_FIELD" class="externalLink">SE_BAD_FIELD</a></td>
+<td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#SE_BAD_FIELD">SE_BAD_FIELD</a></td>
 <td>Not available</td>
 </tr>
 <tr class="b"><td>ch.lambdaj.group.GroupComparator is Serializable; consider declaring a serialVersionUID</td>
 <td>BAD_PRACTICE</td>
-<td><a href="http://findbugs.sourceforge.net/bugDescriptions.html#SE_NO_SERIALVERSIONID" class="externalLink">SE_NO_SERIALVERSIONID</a></td>
+<td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#SE_NO_SERIALVERSIONID">SE_NO_SERIALVERSIONID</a></td>
 <td>20-44</td>
 </tr>
 </table>
@@ -577,7 +662,7 @@
 </tr>
 <tr class="b"><td>Class ch.lambdaj.group.GroupImpl defines non-transient non-serializable instance field groupCondition</td>
 <td>BAD_PRACTICE</td>
-<td><a href="http://findbugs.sourceforge.net/bugDescriptions.html#SE_BAD_FIELD" class="externalLink">SE_BAD_FIELD</a></td>
+<td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#SE_BAD_FIELD">SE_BAD_FIELD</a></td>
 <td>Not available</td>
 </tr>
 </table>
@@ -590,8 +675,8 @@
 </tr>
 <tr class="b"><td>ch.lambdaj.proxy.ProxyIterator.iterateOnValues(Method, Object[]) invokes java.lang.reflect.Method.setAccessible(boolean), which should be invoked from within a doPrivileged block</td>
 <td>BAD_PRACTICE</td>
-<td><a href="http://findbugs.sourceforge.net/bugDescriptions.html#DP_DO_INSIDE_DO_PRIVILEGED" class="externalLink">DP_DO_INSIDE_DO_PRIVILEGED</a></td>
-<td>54</td>
+<td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#DP_DO_INSIDE_DO_PRIVILEGED">DP_DO_INSIDE_DO_PRIVILEGED</a></td>
+<td>52</td>
 </tr>
 </table>
 </div>
@@ -603,17 +688,17 @@
 </tr>
 <tr class="b"><td>Exception is caught when Exception is not thrown in ch.lambdaj.util.IntrospectionUtil.getBooleanPropertyValue(Object, String, String)</td>
 <td>STYLE</td>
-<td><a href="http://findbugs.sourceforge.net/bugDescriptions.html#REC_CATCH_EXCEPTION" class="externalLink">REC_CATCH_EXCEPTION</a></td>
+<td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#REC_CATCH_EXCEPTION">REC_CATCH_EXCEPTION</a></td>
 <td>52</td>
 </tr>
 <tr class="a"><td>Exception is caught when Exception is not thrown in ch.lambdaj.util.IntrospectionUtil.getPropertyValue(Object, String)</td>
 <td>STYLE</td>
-<td><a href="http://findbugs.sourceforge.net/bugDescriptions.html#REC_CATCH_EXCEPTION" class="externalLink">REC_CATCH_EXCEPTION</a></td>
+<td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#REC_CATCH_EXCEPTION">REC_CATCH_EXCEPTION</a></td>
 <td>44</td>
 </tr>
 <tr class="b"><td>Exception is caught when Exception is not thrown in ch.lambdaj.util.IntrospectionUtil.clone(Object)</td>
 <td>STYLE</td>
-<td><a href="http://findbugs.sourceforge.net/bugDescriptions.html#REC_CATCH_EXCEPTION" class="externalLink">REC_CATCH_EXCEPTION</a></td>
+<td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#REC_CATCH_EXCEPTION">REC_CATCH_EXCEPTION</a></td>
 <td>165</td>
 </tr>
 </table>
@@ -626,7 +711,7 @@
 </tr>
 <tr class="b"><td>ch.lambdaj.util.iterator.ResettableIteratorOnArray.ResettableIteratorOnArray(Object[]) may expose internal representation by storing an externally mutable object into ResettableIteratorOnArray.array</td>
 <td>MALICIOUS_CODE</td>
-<td><a href="http://findbugs.sourceforge.net/bugDescriptions.html#EI_EXPOSE_REP2" class="externalLink">EI_EXPOSE_REP2</a></td>
+<td><a class="externalLink" href="http://findbugs.sourceforge.net/bugDescriptions.html#EI_EXPOSE_REP2">EI_EXPOSE_REP2</a></td>
 <td>23</td>
 </tr>
 </table>
@@ -639,7 +724,7 @@
     </div>
     <div id="footer">
       <div class="xright">&#169;  
-          2011
+          2012
     
           
   

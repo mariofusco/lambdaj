@@ -1,11 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pmd version="4.2.5" timestamp="2011-05-20T23:20:17.644">
+<pmd version="4.2.5" timestamp="2012-02-12T22:30:12.190">
+<file name="C:\data\dev\intellij\lambdaj\src\main\java\ch\lambdaj\Lambda.java">
+<violation beginline="5" endline="1349" begincolumn="1" endcolumn="1" rule="TooManyStaticImports" ruleset="Import Statement Rules" package="ch.lambdaj" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#TooManyStaticImports" priority="3">
+Too many static imports may lead to messy code
+</violation>
+</file>
+<file name="C:\data\dev\intellij\lambdaj\src\main\java\ch\lambdaj\function\argument\Argument.java">
+<violation beginline="7" endline="7" begincolumn="1" endcolumn="25" rule="UnusedImports" ruleset="Import Statement Rules" package="ch.lambdaj.function.argument" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'ch.lambdaj.Lambda'
+</violation>
+<violation beginline="9" endline="9" begincolumn="1" endcolumn="25" rule="UnusedImports" ruleset="Import Statement Rules" package="ch.lambdaj.function.argument" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'java.util.HashMap'
+</violation>
+<violation beginline="10" endline="10" begincolumn="1" endcolumn="21" rule="UnusedImports" ruleset="Import Statement Rules" package="ch.lambdaj.function.argument" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'java.util.Map'
+</violation>
+<violation beginline="11" endline="11" begincolumn="1" endcolumn="49" rule="UnusedImports" ruleset="Import Statement Rules" package="ch.lambdaj.function.argument" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'java.util.concurrent.atomic.AtomicInteger'
+</violation>
+</file>
 <file name="C:\data\dev\intellij\lambdaj\src\main\java\ch\lambdaj\function\argument\ArgumentsFactory.java">
-<violation beginline="191" endline="192" begincolumn="15" endcolumn="13" rule="EmptyCatchBlock" ruleset="Basic Rules" package="ch.lambdaj.function.argument" class="ArgumentsFactory" method="createArgumentPlaceholderForUnknownClass" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+<violation beginline="227" endline="228" begincolumn="15" endcolumn="13" rule="EmptyCatchBlock" ruleset="Basic Rules" package="ch.lambdaj.function.argument" class="ArgumentsFactory" method="createArgumentPlaceholderForUnknownClass" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
 Avoid empty catch blocks
 </violation>
-<violation beginline="192" endline="193" begincolumn="15" endcolumn="13" rule="EmptyCatchBlock" ruleset="Basic Rules" package="ch.lambdaj.function.argument" class="ArgumentsFactory" method="createArgumentPlaceholderForUnknownClass" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+<violation beginline="228" endline="229" begincolumn="15" endcolumn="13" rule="EmptyCatchBlock" ruleset="Basic Rules" package="ch.lambdaj.function.argument" class="ArgumentsFactory" method="createArgumentPlaceholderForUnknownClass" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
 Avoid empty catch blocks
+</violation>
+</file>
+<file name="C:\data\dev\intellij\lambdaj\src\main\java\ch\lambdaj\function\argument\InvokerJitter.java">
+<violation beginline="28" endline="28" begincolumn="65" endcolumn="65" rule="EmptyStatementNotInLoop" ruleset="Basic Rules" package="ch.lambdaj.function.argument" class="InvokerJitter" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyStatementNotInLoop" priority="3">
+An empty statement (semicolon) not part of a loop
 </violation>
 </file>
 </pmd>
