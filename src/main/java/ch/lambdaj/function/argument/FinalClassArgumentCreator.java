@@ -5,7 +5,7 @@
 package ch.lambdaj.function.argument;
 
 /**
- *
+ * A factpry for creating arguments placeholder for final classes
  * @author Mario Fusco
  */
 public interface FinalClassArgumentCreator<T> {

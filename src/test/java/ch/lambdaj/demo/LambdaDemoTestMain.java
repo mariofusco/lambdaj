@@ -21,6 +21,8 @@ public class LambdaDemoTestMain {
 	private static final Db db = Db.getInstance();
 
 	public static void main(String[] args) {
+        enableJitting(true);
+
 		int repetitions = REPETITIONS;
 		if (args.length == 1) repetitions = Integer.parseInt(args[0]);
 		

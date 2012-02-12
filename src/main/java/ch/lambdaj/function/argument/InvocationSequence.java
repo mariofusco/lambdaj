@@ -4,6 +4,11 @@
 
 package ch.lambdaj.function.argument;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.atomic.AtomicBoolean;
+
 /**
  * Registers a sequence of method invocations
  *
@@ -11,21 +16,53 @@ package ch.lambdaj.function.argument;
  * @author Frode Carlsen
  */
 final class InvocationSequence implements Invoker {
-    private static final long serialVersionUID = 1L;
+
+    private static boolean jittingEnabled = false;
+    private static ExecutorService executor;
+
+    static void enableJitting(boolean enable) {
+        if (enable) {
+            jittingEnabled = true;
+            if (executor == null) {
+                executor = Executors.newCachedThreadPool(new ThreadFactory() {
+                    public Thread newThread(Runnable r) {
+                        Thread t = new Thread(r);
+                        t.setDaemon(true);
+                        return t;
+                    }
+                });
+            }
+        } else {
+            jittingEnabled = false;
+            if (executor != null) {
+                executor.shutdown();
+                executor = null;
+            }
+        }
+    }
 
     private final Class<?> rootInvokedClass;
     private String inkvokedPropertyName;
     Invocation lastInvocation;
-    private transient int hashCode;
+    private int hashCode;
+
+    private boolean jitDone;
+    private AtomicBoolean needsJitting;
+
+    private Invoker invoker = this;
 
     InvocationSequence(Class<?> rootInvokedClass) {
         this.rootInvokedClass = rootInvokedClass;
+        jitDone = true;
     }
 
     InvocationSequence(InvocationSequence sequence, Invocation invocation) {
-        this(sequence.getRootInvokedClass());
+        rootInvokedClass = sequence.getRootInvokedClass();
         invocation.previousInvocation = sequence.lastInvocation;
         lastInvocation = invocation;
+        boolean isJittable = jittingEnabled && isJittable(lastInvocation);
+        if (isJittable) needsJitting = new AtomicBoolean(isJittable);
+        jitDone = !isJittable;
     }
 
     Class<?> getRootInvokedClass() {
@@ -80,6 +117,18 @@ final class InvocationSequence implements Invoker {
         return hashCode;
     }
 
+    public Object evaluate(final Object object) {
+        if (!jitDone && needsJitting.compareAndSet(true, false)) {
+            jitDone = true;
+            executor.submit(new Runnable() {
+                public void run() {
+                    invoker = new InvokerJitter(object, InvocationSequence.this).jitInvoker();
+                }
+            });
+        }
+        return invoker.invokeOn(object);
+    }
+
     public Object invokeOn(Object object) {
         return invokeOn(lastInvocation, object);
     }
@@ -88,10 +137,6 @@ final class InvocationSequence implements Invoker {
         if (invocation == null) return value;
         if (invocation.previousInvocation != null) value = invokeOn(invocation.previousInvocation, value);
         return invocation.invokeOn(value);
-    }
-
-    boolean isJittable() {
-        return lastInvocation != null && isJittable(lastInvocation);
     }
 
     private boolean isJittable(Invocation invocation) {

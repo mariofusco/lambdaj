@@ -17,7 +17,15 @@ import static ch.lambdaj.proxy.ProxyUtil.*;
 public final class ArgumentsFactory {
 
     private ArgumentsFactory() { }
-	
+
+    /**
+     * Enable or disable the JIT optimization of lambdaj's arguments. Disabled by default
+     * @param enable True to enable the JIT optimization, false to disable it
+     */
+    public static void enableJitting(boolean enable) {
+        InvocationSequence.enableJitting(enable);
+    }
+
 	// ////////////////////////////////////////////////////////////////////////
 	// /// Factory
 	// ////////////////////////////////////////////////////////////////////////
@@ -32,18 +40,26 @@ public final class ArgumentsFactory {
 	}
 	
 	private static final Map<InvocationSequence, Object> PLACEHOLDER_BY_INVOCATION = new WeakHashMap<InvocationSequence, Object>();
-    
+
+	private static final Map<InvocationSequence, InvocationSequence> LIMITED_VALUE_INVOCATIONS = new HashMap<InvocationSequence, InvocationSequence>();
+
 	@SuppressWarnings("unchecked")
 	static synchronized <T> T createArgument(Class<T> clazz, InvocationSequence invocationSequence) {
 		T placeholder = (T) PLACEHOLDER_BY_INVOCATION.get(invocationSequence);
-		if (placeholder == null) placeholder = registerNewArgument(clazz, invocationSequence);
-		else if (isLimitedValues(placeholder)) LIMITED_VALUE_ARGUMENTS.get().setArgument(placeholder, new Argument<T>(invocationSequence));
+		if (placeholder == null) {
+            placeholder = registerNewArgument(clazz, invocationSequence);
+        } else if (isLimitedValues(placeholder)) {
+            LIMITED_VALUE_ARGUMENTS.get().setArgument(placeholder, new Argument<T>(LIMITED_VALUE_INVOCATIONS.get(invocationSequence)));
+        }
 		return placeholder;
 	}
 
     private static <T> T registerNewArgument(Class<T> clazz, InvocationSequence invocationSequence) {
         T placeholder = (T)createPlaceholder(clazz, invocationSequence);
         PLACEHOLDER_BY_INVOCATION.put(invocationSequence, placeholder);
+        if (isLimitedValues(placeholder)) {
+            LIMITED_VALUE_INVOCATIONS.put(invocationSequence, invocationSequence);
+        }
         bindArgument(placeholder, new Argument<T>(invocationSequence));
         return placeholder;
     }
@@ -181,18 +197,25 @@ public final class ArgumentsFactory {
 		}
     }
 
-    private static final Map<Class<?>, FinalClassArgumentCreator<?>> finalClassArgumentCreators = new HashMap<Class<?>, FinalClassArgumentCreator<?>>();
+    private static final Map<Class<?>, FinalClassArgumentCreator<?>> FINAL_CLASS_ARGUMENT_CREATORS = new HashMap<Class<?>, FinalClassArgumentCreator<?>>();
 
+    /**
+     * Register a custom argument creator factory for an unknown final class
+     * @param clazz  The class for which this factory should be used
+     * @param creator The argument factory
+     * @param <T>
+     */
     public static <T> void registerFinalClassArgumentCreator(Class<T> clazz, FinalClassArgumentCreator<T> creator) {
-        finalClassArgumentCreators.put(clazz, creator);
+        if ((clazz.getModifiers() & Modifier.FINAL) == 0) throw new RuntimeException("A custom argument creator can be registered only for final classes");
+        FINAL_CLASS_ARGUMENT_CREATORS.put(clazz, creator);
     }
 
     public static <T> void deregisterFinalClassArgumentCreator(Class<T> clazz) {
-        finalClassArgumentCreators.remove(clazz);
+        FINAL_CLASS_ARGUMENT_CREATORS.remove(clazz);
     }
 
     private static Object createArgumentPlaceholderForUnknownClass(Class<?> clazz, Integer placeholderId) throws IllegalAccessException, InstantiationException {
-        FinalClassArgumentCreator<?> creator = finalClassArgumentCreators.get(clazz);
+        FinalClassArgumentCreator<?> creator = FINAL_CLASS_ARGUMENT_CREATORS.get(clazz);
         if (creator != null) return creator.createArgumentPlaceHolder(placeholderId);
 
         for (Constructor constructor : clazz.getConstructors()) {

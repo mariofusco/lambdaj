@@ -1,3 +1,7 @@
+// Modified or written by Lambdascale SRL for inclusion with lambdaj.
+// Copyright (c) 2009-2010 Mario Fusco.
+// Licensed under the Apache License, Version 2.0 (the "License")
+
 package ch.lambdaj.function.argument;
 
 import net.sf.cglib.asm.ClassWriter;
@@ -9,7 +13,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import static net.sf.cglib.asm.Opcodes.*;
 
-public class InvokerJitter {
+class InvokerJitter {
 
     private static final AtomicInteger jitCounter = new AtomicInteger(1);
 

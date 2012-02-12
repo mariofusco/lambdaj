@@ -1,3 +1,7 @@
+// Modified or written by Lambdascale SRL for inclusion with lambdaj.
+// Copyright (c) 2009-2010 Mario Fusco.
+// Licensed under the Apache License, Version 2.0 (the "License")
+
 package ch.lambdaj.function.argument;
 
 import static ch.lambdaj.function.argument.ArgumentsFactory.*;
@@ -45,7 +49,7 @@ public class ArgumentsFactoryTest {
     @Test
     public void testArgumentsFactoryForFinalClasses() {
         assertFalse(createArgumentPlaceholder(DateTime.class).equals(createArgumentPlaceholder(DateTime.class)));
-        ArgumentsFactory.registerFinalClassArgumentCreator(LocalDate.class, new LocalDateArgumentCreator());
+        registerFinalClassArgumentCreator(LocalDate.class, new LocalDateArgumentCreator());
         assertFalse(createArgumentPlaceholder(LocalDate.class).equals(createArgumentPlaceholder(LocalDate.class)));
         ArgumentsFactory.deregisterFinalClassArgumentCreator(LocalDate.class);
         assertTrue(createArgumentPlaceholder(LocalDate.class).equals(createArgumentPlaceholder(LocalDate.class)));

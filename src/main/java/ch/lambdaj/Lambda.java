@@ -36,7 +36,23 @@ public final class Lambda {
 
     private Lambda() { }
 
-    public static int jitThreshold = -1;
+    /**
+     * Enable or disable the JIT optimization of lambdaj's arguments. Disabled by default
+     * @param enable True to enable the JIT optimization, false to disable it
+     */
+    public static void enableJitting(boolean enable) {
+        ArgumentsFactory.enableJitting(enable);
+    }
+
+    /**
+     * Register a custom argument creator factory for an unknown final class
+     * @param clazz  The class for which this factory should be used
+     * @param creator The argument factory
+     * @param <T>
+     */
+    public static <T> void registerFinalClassArgumentCreator(Class<T> clazz, FinalClassArgumentCreator<T> creator) {
+        ArgumentsFactory.registerFinalClassArgumentCreator(clazz, creator);
+    }
 
 	/**
 	 * Constructs a proxy object that mocks the given Class registering all the subsequent invocations on the object.
