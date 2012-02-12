@@ -35,7 +35,7 @@ final class InvocationSequence implements Invoker {
         } else {
             jittingEnabled = false;
             if (executor != null) {
-                executor.shutdown();
+                executor.shutdownNow();
                 executor = null;
             }
         }

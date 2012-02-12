@@ -15,11 +15,11 @@ import ch.lambdaj.group.*;
 public class LambdaDemoTest {
 
 	private final Db db = Db.getInstance();
-	
+
 	@Test
 	public void testPrintAllBrands() {
 		StringBuilder sb = new StringBuilder();
-		for (Car car : db.getCars()) 
+		for (Car car : db.getCars())
 			sb.append(car.getBrand()).append(", ");
 		String brandsIterative = sb.toString().substring(0, sb.length()-2);
 
@@ -27,7 +27,7 @@ public class LambdaDemoTest {
 
 		assertEquals(brandsIterative, brands);
 	}
-	
+
 	@Test
 	public void testFindAllSalesOfAFerrari() {
 		List<Sale> salesIterative = new ArrayList<Sale>();
@@ -35,7 +35,12 @@ public class LambdaDemoTest {
 			if (sale.getCar().getBrand().equals("Ferrari")) salesIterative.add(sale);
 		}
 
-		List<Sale> sales = select(db.getSales(), having(on(Sale.class).getCar().getBrand(), equalTo("Ferrari")));
+        enableJitting(true);
+        List<Sale> sales = null;
+        for (int i = 0; i < 100000; i++) {
+            sales = select(db.getSales(), having(on(Sale.class).getCar().getBrand2(), equalTo("Ferrari")));
+        }
+        enableJitting(false);
 
 		assertTrue(listsAreEqual(sales, salesIterative));
 	}
