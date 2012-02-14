@@ -35,7 +35,7 @@ final class InvocationSequence implements Invoker {
         } else {
             jittingEnabled = false;
             if (executor != null) {
-                executor.shutdownNow();
+                executor.shutdown();
                 executor = null;
             }
         }
@@ -120,11 +120,13 @@ final class InvocationSequence implements Invoker {
     public Object evaluate(final Object object) {
         if (!jitDone && needsJitting.compareAndSet(true, false)) {
             jitDone = true;
-            executor.submit(new Runnable() {
-                public void run() {
-                    invoker = new InvokerJitter(object, InvocationSequence.this).jitInvoker();
-                }
-            });
+            if (executor != null) {
+                executor.submit(new Runnable() {
+                    public void run() {
+                        invoker = new InvokerJitter(object, InvocationSequence.this).jitInvoker();
+                    }
+                });
+            }
         }
         return invoker.invokeOn(object);
     }
