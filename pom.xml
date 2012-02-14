@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.googlecode.lambdaj</groupId>
   <artifactId>lambdaj</artifactId>
-  <version>2.4-SNAPSHOT</version>
+  <version>2.4</version>
   <name>lambdaj</name>
   <packaging>jar</packaging>
   <description>The pseudo-functional collection manipulation library</description>
