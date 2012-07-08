@@ -228,6 +228,21 @@ public final class ArgumentsFactory {
             } catch (InvocationTargetException e2) {
             }
         }
+        for (Constructor constructor : clazz.getConstructors()) {
+            Class<?>[] params = constructor.getParameterTypes();
+            if (params.length != 2) continue;
+            try {
+                if (params[0] == String.class) {
+                    if (params[1] == String.class) return constructor.newInstance(String.valueOf(placeholderId), String.valueOf(PLACEHOLDER_COUNTER.addAndGet(1)));
+                    if (isNumericClass(params[1])) return constructor.newInstance(String.valueOf(placeholderId), PLACEHOLDER_COUNTER.addAndGet(1));
+                } else if (isNumericClass(params[0])) {
+                    if (params[1] == String.class) return constructor.newInstance(placeholderId, String.valueOf(PLACEHOLDER_COUNTER.addAndGet(1)));
+                    if (isNumericClass(params[1])) return constructor.newInstance(placeholderId, PLACEHOLDER_COUNTER.addAndGet(1));
+                }
+            } catch (IllegalAccessException e1) {
+            } catch (InvocationTargetException e2) {
+            }
+        }
         return clazz.newInstance();
     }
 

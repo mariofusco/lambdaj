@@ -4,16 +4,17 @@
 
 package ch.lambdaj.function.argument;
 
-import static ch.lambdaj.function.argument.ArgumentsFactory.*;
-import static org.hamcrest.Matchers.*;
-import static org.junit.Assert.*;
-import static org.junit.Assert.assertEquals;
-
-import java.util.*;
-
 import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
-import org.junit.*;
+import org.junit.Test;
+
+import java.util.Date;
+import java.util.UUID;
+
+import static ch.lambdaj.function.argument.ArgumentsFactory.createArgumentPlaceholder;
+import static ch.lambdaj.function.argument.ArgumentsFactory.registerFinalClassArgumentCreator;
+import static org.hamcrest.Matchers.instanceOf;
+import static org.junit.Assert.*;
 
 public class ArgumentsFactoryTest {
 
@@ -33,6 +34,7 @@ public class ArgumentsFactoryTest {
         assertThat(createArgumentPlaceholder(Character.class), instanceOf(Character.class));
         assertThat(createArgumentPlaceholder(Character.TYPE), instanceOf(Character.class));
 		assertThat(createArgumentPlaceholder(Date.class), instanceOf(Date.class));
+		assertThat(createArgumentPlaceholder(UUID.class), instanceOf(UUID.class));
 	}
 
     @Test
@@ -99,10 +101,12 @@ public class ArgumentsFactoryTest {
     public static final class UnistatiableClass {
         private int intValue;
         private String stringValue;
+        private long longValue;
 
-        public UnistatiableClass(int intValue, String stringValue) {
+        public UnistatiableClass(int intValue, String stringValue, long longValue) {
             this.intValue = intValue;
             this.stringValue = stringValue;
+            this.longValue = longValue;
         }
     }
 
