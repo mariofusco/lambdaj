@@ -34,6 +34,11 @@ public class ClosureTest {
 		int nonCommutativeDoOnInt(int val1, int val2, int val3, int val4);
 	}
 
+    @Test(expected = UndefinedClosureException.class)
+    public void testUndefinedClosure() {
+        of(System.out).println(var(String.class));
+    }
+
 	@Test
 	public void testSystemOut() {
 		Closure1<String> println = closure(String.class); { of(System.out).println(var(String.class)); }

@@ -71,4 +71,12 @@ public abstract class DelayedClosure<T> {
     private void execute() {
         result = doWithClosure(closure);
     }
+
+    /**
+     * Cleans delayed closures currently bound to actual thread's thread local.
+     */
+    public static void cleanupDelayed() {
+        CURRENT_DELAYED.remove();
+    }
+
 }
