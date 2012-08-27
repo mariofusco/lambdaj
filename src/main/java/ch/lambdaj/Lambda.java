@@ -1346,4 +1346,17 @@ public final class Lambda {
     public static <T> ClosureResult<T> delayedClosure(DelayedClosure<T> delayedClosure) {
         return delayedClosure.getClosureResult();
     }
+
+    /**
+     * Cleans objects bound to current thread local. This is safety net to prevent
+     * ClassLoader's memory leaks when application is running at thread-pool environment.
+     * Typicaly when running on application servers like Tomcat which uses WebappClassLoader
+     * to load .war applications.
+     */
+    public static void cleanupLambdaJ() {
+        ArgumentsFactory.cleanupLimitedValueArguments();
+        ClosuresFactory.cleanupClosures();
+        DelayedClosure.cleanupDelayed();
+    }
+
 }

@@ -283,4 +283,12 @@ public final class ArgumentsFactory {
     private static boolean isShort(Class<?> clazz) {
         return clazz == Short.TYPE || clazz == Short.class;
     }
+
+    /**
+     * Cleans limited value placeholders currently bound to actual thread's thread local.
+     */
+    public static void cleanupLimitedValueArguments() {
+        LIMITED_VALUE_ARGUMENTS.remove();
+    }
+
 }

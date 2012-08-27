@@ -21,13 +21,24 @@ public final class ClosuresFactory {
 	private static final ThreadLocal<AbstractClosure> CLOSURES = new ThreadLocal<AbstractClosure>();
 
     /**
-     * Binds an object to the active closure that is the last one created in the current thread.
+     * Binds an object to the active closure that is the last one created in the current thread. After binding
+     * closure in current context is removed from ThreadLocal.
+     *
      * @param closed The object that has to be bind to the active closure
      * @param closedClass The actual class of the proxied object
      * @return An instance of the closedClass that is actually a proxy used to register all the invocation on the closed object
+     * @throws UndefinedClosureException if closure can not be bound
      */
 	public static <T> T bindClosure(Object closed, Class<T> closedClass) {
+        if (CLOSURES.get() == null) {
+            throw new UndefinedClosureException("Can not bind closure in current context. Have you invoked Lambda.closure()?");
+        }
+
+        try {
 		return CLOSURES.get().of(closed, closedClass);
+        } finally {
+            CLOSURES.remove();
+        }
 	}
 
     /**
@@ -131,5 +142,12 @@ public final class ClosuresFactory {
         boolean isClosureVarPlaceholder() {
             return this == VAR || this == FINAL_VAR;
         }
+    }
+
+    /**
+     * Cleans closures currently bound to actual thread's thread local.
+     */
+    public static void cleanupClosures() {
+       CLOSURES.remove();
     }
 }
